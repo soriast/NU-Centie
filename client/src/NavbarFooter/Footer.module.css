@@ -1,0 +1,27 @@
+.container {
+  background: rgb(48, 64, 141);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.container img {
+  width: 5%;
+  margin-bottom: 5px;
+}
+
+.container h3,
+.container h5 {
+  margin: 0;
+}
+
+.container h3 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.container h5 {
+  color: rgb(242, 208, 54);
+}

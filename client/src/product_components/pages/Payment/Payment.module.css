@@ -1,0 +1,30 @@
+.title,
+.description,
+.upload {
+  background: rgb(245, 245, 245);
+}
+
+.title h2 {
+  padding: 15px 0;
+  color: rgb(48, 64, 141);
+}
+
+.description h3 {
+  padding-top: 15px;
+}
+
+.description p {
+  padding-bottom: 15px;
+}
+.upload {
+  margin-bottom: 5rem;
+}
+.upload button {
+  color: white;
+  border: none;
+  background: rgb(48, 64, 141);
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 15px 0;
+  cursor: pointer;
+}
