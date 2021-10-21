@@ -5,6 +5,8 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import NavBar from "./NavbarFooter/NavBar";
+import Footer from "./NavbarFooter/Footer";
 import { lazy, Suspense } from "react";
 import ViewStory from "./innovator_components/SeeMore/ViewStory";
 const Payment = lazy(() =>
@@ -23,11 +25,19 @@ const Checkout = lazy(() =>
 const Home = lazy(() => import("./innovator_components/Home"));
 const Main = lazy(() => import("./innovator_components/main"));
 const ViewMore = lazy(() => import("./innovator_components/SeeMore/ViewStory"));
+const InnovationSecondPage = lazy(() => import("./innovation_components/Pages/InnovationSecondPage"));
+const InnovationThirdPage = lazy(() => import("./innovation_components/Pages/InnovationThree"));
+const Create = lazy(() => import("./innovation_components/Pages/Innovation"));
+
 
 function App() {
   return (
     <Router>
       <Suspense fallback={<div />}>
+      <div>
+        <NavBar />
+        </div>
+        
         <Switch>
           <Route path="/" exact>
             <Redirect to="/products/innovations" />
@@ -39,10 +49,25 @@ function App() {
           <Route path="/payment" component={Payment} />
 
           <Route path="/innovator" component={Home} />
+          <Route
+                exact
+                path="/innovationSpecific"
+                component={InnovationSecondPage}
+              />
+              <Route
+                exact
+                path="/innovationInvest"
+                component={InnovationThirdPage}
+              />
+
+          <Route path="/innovation" component={Create} />
           <Route path="/main" component={Main} />
           <Route path="/ViewStory" component={ViewStory} />
+          
         </Switch>
+        <Footer/>
       </Suspense>
+
     </Router>
   );
 }
