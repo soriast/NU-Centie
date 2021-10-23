@@ -25,19 +25,29 @@ const Checkout = lazy(() =>
 const Home = lazy(() => import("./innovator_components/Home"));
 const Main = lazy(() => import("./innovator_components/main"));
 const ViewMore = lazy(() => import("./innovator_components/SeeMore/ViewStory"));
-const InnovationSecondPage = lazy(() => import("./innovation_components/Pages/InnovationSecondPage"));
-const InnovationThirdPage = lazy(() => import("./innovation_components/Pages/InnovationThree"));
+const InnovationSecondPage = lazy(() =>
+  import("./innovation_components/Pages/InnovationSecondPage")
+);
+const InnovationThirdPage = lazy(() =>
+  import("./innovation_components/Pages/InnovationThree")
+);
 const Create = lazy(() => import("./innovation_components/Pages/Innovation"));
-
+const FAQs = lazy(() => import("./pages/FAQs/FAQs"));
+const NewsLetter = lazy(() => import("./pages/Newsletter/Newsletter"));
+const NewsLetterView = lazy(() => import("./pages/Newsletter/ViewNewsletter"));
+const Library = lazy(() => import("./pages/Library/Library"));
+const LibraryView = lazy(() => import("./pages/Library/ViewLibrary"));
+const ContactUs = lazy(() => import("./ContactUs/ContactUs"));
+const PrivacyPolicy = lazy(() => import("./PrivacyPolicy/PrivacyPolicy"));
 
 function App() {
   return (
     <Router>
       <Suspense fallback={<div />}>
-      <div>
-        <NavBar />
+        <div>
+          <NavBar />
         </div>
-        
+
         <Switch>
           <Route path="/" exact>
             <Redirect to="/products/innovations" />
@@ -47,27 +57,31 @@ function App() {
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/payment" component={Payment} />
-
+          <Route path="/FAQs" component={FAQs} />
+          <Route path="/newsletter" component={NewsLetter} />
+          <Route path="/newsletter/:id" component={NewsLetterView} />
+          <Route path="/library" component={Library} />
+          <Route path="/library/:id" component={LibraryView} />
           <Route path="/innovator" component={Home} />
           <Route
-                exact
-                path="/innovationSpecific"
-                component={InnovationSecondPage}
-              />
-              <Route
-                exact
-                path="/innovationInvest"
-                component={InnovationThirdPage}
-              />
+            exact
+            path="/innovationSpecific"
+            component={InnovationSecondPage}
+          />
+          <Route
+            exact
+            path="/innovationInvest"
+            component={InnovationThirdPage}
+          />
 
           <Route path="/innovation" component={Create} />
           <Route path="/main" component={Main} />
           <Route path="/ViewStory" component={ViewStory} />
-          
+          <Route path="/contactus" component={ContactUs} exact />
+          <Route path="/privacy" component={PrivacyPolicy} exact />
         </Switch>
-        <Footer/>
+        <Footer />
       </Suspense>
-
     </Router>
   );
 }

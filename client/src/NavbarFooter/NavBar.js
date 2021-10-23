@@ -39,8 +39,24 @@ function NavBar() {
                 {/* about us href landing page */}
               </li>
               <li>
-                <a href="#!">contact us</a>
+                <a href="/contactus">contact us</a>
                 {/* contact us href landing page */}
+              </li>
+              <li>
+                <a href="/newsletter">Newsletter</a>
+                {/* newslleter us href landing page */}
+              </li>
+              <li>
+                <a href="/library">library</a>
+                {/* Library href landing page */}
+              </li>
+              <li>
+                <a href="/privacy">Privacy Policy</a>
+                {/* Privacy Policy href landing page */}
+              </li>
+              <li>
+                <a href="/FAQs">FAQs</a>
+                {/* Privacy Policy href landing page */}
               </li>
             </ul>
             <a href="/cart">

@@ -1,0 +1,132 @@
+.heading {
+  background-color: $blue;
+  filter: drop-shadow($black 0 0 0.25rem);
+  position: sticky;
+  top: 0;
+  z-index: +100;
+  height: 10rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  .logo {
+    margin-left: 3.75rem;
+    margin-right: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    grid-gap: 1.25rem;
+    align-items: center;
+    .img {
+      height: 7rem;
+      width: auto;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    a {
+      text-decoration: none;
+      .title {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        text-transform: uppercase;
+        span {
+          &:first-child {
+            color: $white;
+            font-weight: bolder;
+            font-size: 1.5rem;
+          }
+          &:last-child {
+            color: $gold;
+            font-weight: bolder;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    grid-gap: 1.25rem;
+    margin-right: 3.75rem;
+    margin-left: auto;
+    .navbar {
+      display: flex;
+      flex-flow: row nowrap;
+      grid-gap: 1.25rem;
+      list-style: none;
+      align-items: center;
+      li {
+        a {
+          color: $white;
+          text-decoration: none;
+          font-weight: 700;
+          position: relative;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          text-transform: uppercase;
+          &:not(.active)::before {
+            position: absolute;
+            content: "";
+            background-color: $gold;
+            bottom: -0.5rem;
+            width: 100%;
+            height: 0.125rem;
+            @include Transition(250ms ease-in-out transform);
+            @include Transform(scaleX(0));
+            border-radius: 100%;
+          }
+          &:not(.active):hover::before {
+            @include Transform(scaleX(1));
+          }
+          svg {
+            margin-left: 0.5rem;
+          }
+          &.active {
+            color: $gold;
+          }
+          &.active::after {
+            position: absolute;
+            content: "";
+            background-color: $gold;
+            bottom: -0.5rem;
+            height: 0.125rem;
+            aspect-ratio: 1;
+            left: 50%;
+            @include Transform(translateX(-50%));
+            border-radius: 100%;
+          }
+        }
+      }
+    }
+    .cart {
+      display: flex;
+      flex-flow: row nowrap;
+      padding: 0.75rem;
+      background-color: transparent;
+      position: relative;
+      svg {
+        color: $white;
+        font-size: 1.5rem;
+      }
+      .ctr-items {
+        background-color: $gold;
+        color: $white;
+        height: 1rem;
+        width: 1rem;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 0.75rem;
+        font-weight: bolder;
+        border-radius: 100%;
+      }
+    }
+  }
+}
