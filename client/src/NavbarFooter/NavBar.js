@@ -27,6 +27,10 @@ function NavBar() {
                 {/* innovator href landing page */}
               </li>
               <li>
+                <a href="/innovation">innovations</a>
+                {/* innovator href landing page */}
+              </li>
+              <li>
                 <a href="#!">exhibits</a>
                 {/* exhibits href landing page */}
               </li>
@@ -54,6 +58,11 @@ function NavBar() {
         <div>
           <img src={innovator} alt="" />
           <a href="/innovator">innovators</a>
+          {/* innovators href landing page */}
+        </div>
+        <div>
+          <img src={innovator} alt="" />
+          <a href="/innovation">innovation</a>
           {/* innovators href landing page */}
         </div>
         <div>

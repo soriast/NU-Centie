@@ -18,7 +18,7 @@ export default function Card(props) {
   const updateInnovatorLike = (id) => {
     console.log('here at update like');
     console.log(id);
-    Axios.put("http://localhost:3000/updateLike", { id: id }).then((response) => {
+    Axios.put("http://localhost:3003/updateLike", { id: id }).then((response) => {
       // alert('update');
       window.location.reload(false);
     })

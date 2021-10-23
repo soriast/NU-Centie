@@ -27,7 +27,7 @@ function Main() {
 
   const GetInnovators = () => {
     console.log("we here at get innovators");
-    Axios.get("http://localhost:3000/innovdb").then((response) => {
+    Axios.get("http://localhost:3003/innovdb").then((response) => {
       console.log(response);
       setInnovatorList(response.data);
     });
@@ -43,7 +43,6 @@ function Main() {
 
   return (
     <div className="Main">
-      <NavBar />
       <div className="MainContainer">
         <h1 className="heading1">INNOVATORS & STORIES</h1>
         {/* <button onClick={GetInnovators}>Show btt </button> */}

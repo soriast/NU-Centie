@@ -15,7 +15,7 @@ function Products() {
         <Helmet>
           <title>Innovations | </title>
         </Helmet>
-        <NavBar />
+
 
         <Heading category={category} />
 
@@ -26,7 +26,7 @@ function Products() {
           <title>Books | </title>
         </Helmet>
         {/* <img src={Navbar} alt="" style={{ width: "100%" }} /> */}
-        <NavBar />
+
         <Heading category={category} />
         <Gallery props={category} />
       </Route>
@@ -35,7 +35,7 @@ function Products() {
           <title>Souvenirs | </title>
         </Helmet>
         {/* <img src={Navbar} alt="" style={{ width: "100%" }} /> */}
-        <NavBar />
+
         <Heading category={category} />
         <Gallery props={category} />
       </Route>

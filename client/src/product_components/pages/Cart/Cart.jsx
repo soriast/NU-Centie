@@ -111,7 +111,6 @@ function Cart() {
   };
   return (
     <>
-      <NavBar />
       <main className={`container ${style.cart}`}>
         <h1 className={style.cart__label}>Shopping Cart</h1>
         <div className={style.cart__labels}>

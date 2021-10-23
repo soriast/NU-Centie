@@ -8,8 +8,7 @@ import {
 import { GlobalStyle } from "../innovator_components/globalStyles";
 import Hero from "../innovator_components/Hero/index";
 import Products from "../innovator_components/Products/index";
-import NavBar from "../NavbarFooter/NavBar";
-import Footer from "../NavbarFooter/Footer";
+
 import InnovYear from "../innovator_components/InnovYear/index";
 // import App from "./";
 import { useState, useEffect } from "react";
@@ -21,7 +20,7 @@ function Home() {
 
   const GetBestInnovator = () => {
     console.log("we here at get best innovators");
-    Axios.get("http://localhost:3000/grrrr").then((response) => {
+    Axios.get("http://localhost:3003/grrrr").then((response) => {
       console.log(response);
       setInnovatorBest(response.data);
     });
@@ -29,7 +28,7 @@ function Home() {
 
   const GetFeaturedInnovs = () => {
     console.log("we here at get featured innovators");
-    Axios.get("http://localhost:3000/featuredinnov").then((response) => {
+    Axios.get("http://localhost:3003/featuredinnov").then((response) => {
       console.log(response);
       setFeaturedInnovs(response.data);
     });
@@ -64,7 +63,6 @@ function Home() {
   return (
     <div className="App">
       <Route>
-        <NavBar />
         <Hero />
         <GlobalStyle />
 
@@ -83,7 +81,6 @@ function Home() {
         <InnovYear heading="THE INNOVATOR OF THE YEAR" data={innovBest} />
         <Products heading="FEATURED" heading1="INNOVATORS" data={featured} />
 
-        <Footer />
       </Route>
     </div>
   );
