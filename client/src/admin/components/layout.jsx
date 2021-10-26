@@ -4,10 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import {
   Badge,
-  Button,
-  Container,
   Divider,
-  IconButton,
   makeStyles,
 } from "@material-ui/core";
 import { TiShoppingCart } from "react-icons/ti";

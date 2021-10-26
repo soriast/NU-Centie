@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Nav, Row ,Tab, Container, Image,} from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import { HiHome } from "react-icons/hi";
 import { MdEqualizer, MdList,  } from "react-icons/md";
 import { AiFillSchedule } from "react-icons/ai";

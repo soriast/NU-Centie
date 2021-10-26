@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 import { useParams } from "react-router-dom";
 import SEO from "../../components/helmet/Helmet";
 import LoadingImage from "../../assets/images/newsletter/loading.png";
@@ -37,7 +37,7 @@ const ViewNewsletter = () => {
           <div className="news_content">
             <h1 className="title">{viewLet?.newsletter_title}</h1>
             <p className="subtitle">
-              <Moment format={"MMMM DD YYYY"} date={viewLet?.date_created} />
+              {/* <Moment format={"MMMM DD YYYY"} date={viewLet?.date_created} /> */}
             </p>
             <p className="description">
               {viewLet.content ? (

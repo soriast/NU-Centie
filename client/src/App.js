@@ -40,6 +40,8 @@ const LibraryView = lazy(() => import("./pages/Library/ViewLibrary"));
 const ContactUs = lazy(() => import("./ContactUs/ContactUs"));
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy/PrivacyPolicy"));
 
+const MainAdmin = lazy(() => import("./admin/components/Main"));
+
 function App() {
   return (
     <Router>
@@ -49,9 +51,10 @@ function App() {
         </div>
 
         <Switch>
-          <Route path="/" exact>
+        <Route path="/" component={MainAdmin} />
+          {/* <Route path="/" exact>
             <Redirect to="/products/innovations" />
-          </Route>
+          </Route> */}
           <Route path="/products/:category" component={Products} />
           <Route path="/product/:id" component={ProductView} />
           <Route path="/cart" component={Cart} />
