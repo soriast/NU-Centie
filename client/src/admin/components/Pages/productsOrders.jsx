@@ -575,6 +575,177 @@ function ProductsOrders() {
     </Box>
             </div>
         </Row>
+        <Row>
+            <div style={{padding: 10 , color:'#30408D'}}>
+                <h1>Payment</h1>
+            </div>
+        </Row>
+
+        <Row>
+            <div style={{padding:20}}>
+            <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={valueSecond} onChange={handleChangeSecond} aria-label="basic tabs example">
+          <Tab label="Payment" {...a11yProps(0)} />
+          <Tab label="Invesment" {...a11yProps(1)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={valueSecond} index={0}>
+ {/* //Souvenir */}
+
+      <div style={{padding:20}}>
+            <MaterialTable
+      title=""
+      columns={[
+        { title: 'Payment ID', field: 'payment_id' },
+        { title: 'Payment Type', field: 'payment_type' },
+        { title: 'Payment Proof', field: 'payment_proof'},
+        { title: 'Order ID', field: 'order_id'},
+        { title: 'User ID', field: 'user_id'},
+        {
+            title: '',
+            render: rowData => <div style={{cursor:'pointer'}}> 
+               
+                <MoreHorizIcon onClick={handleClick} />
+                <StyledMenu
+        id="demo-customized-menu"
+        MenuListProps={{
+          'aria-labelledby': 'demo-customized-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose} disableRipple>
+          <EditIcon />
+         <strong> Edit </strong>
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          <FileCopyIcon style={{color:'red'}}/>
+         <strong style={{color:'red', marginTop:5}}>Archive</strong> 
+        </MenuItem>
+      </StyledMenu>
+
+                 </div>
+          }
+        
+      ]}
+      actions={[
+        {
+          icon: 'add',
+          tooltip: 'Add Subscriber',
+          isFreeAction: true,
+          onClick: (event, rowData) => {
+            setModalShow(true);
+          }
+        },
+        {
+            icon: ArchiveIcon,
+            tooltip: 'View Archive',
+            isFreeAction: true,
+            onClick: (event) => alert("You want to add a new row")
+          }
+      ]}
+      data={[
+        { payment_id: '101', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:101},
+        { payment_id: '102', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:102},
+        { payment_id: '103', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:103},
+        { payment_id: '104', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:104},
+        { payment_id: '105', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:105},
+        { payment_id: '106', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:106},
+        { payment_id: '107', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:107},
+        { payment_id: '108', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:108},
+        { payment_id: '109', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:109},
+        { payment_id: '110', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:110},
+        { payment_id: '111', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:111},
+        { payment_id: '112', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001 , user_id:112},
+      ]}        
+      options={{
+        sorting: true
+      }}
+    />
+            </div>
+      </TabPanel>
+      <TabPanel value={valueSecond} index={1}>
+        {/* Book */}
+        <div style={{padding:20}}>
+            <MaterialTable
+      title=""
+      columns={[
+        { title: 'Invest ID', field: 'invest_id' },
+        { title: 'Date', field: 'date' },
+        { title: 'Amount', field: 'amount'},
+        { title: 'Innovation ID', field: 'inno_id'},
+        { title: 'Investor ID', field: 'invest_id'},
+        { title: 'Invest Reference', field: 'investor_ref'},
+        { title: 'Payment Proof', field: 'payment_proof'},
+        {
+            title: '',
+            render: rowData => <div style={{cursor:'pointer'}}> 
+               
+                <MoreHorizIcon onClick={handleClick} />
+                <StyledMenu
+        id="demo-customized-menu"
+        MenuListProps={{
+          'aria-labelledby': 'demo-customized-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose} disableRipple>
+          <EditIcon />
+         <strong> Edit </strong>
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          <FileCopyIcon style={{color:'red'}}/>
+         <strong style={{color:'red', marginTop:5}}>Archive</strong> 
+        </MenuItem>
+      </StyledMenu>
+
+                 </div>
+          }
+        
+      ]}
+      actions={[
+        {
+          icon: 'add',
+          tooltip: 'Add Subscriber',
+          isFreeAction: true,
+          onClick: (event, rowData) => {
+            setModalShow(true);
+          }
+        },
+        {
+            icon: ArchiveIcon,
+            tooltip: 'View Archive',
+            isFreeAction: true,
+            onClick: (event) => alert("You want to add a new row")
+          }
+      ]}
+      data={[
+        { invest_id: '101', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '101', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '102', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '102', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '103', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '103', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '104', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '104', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '105', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '105', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '106', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '106', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '107', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '107', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '108', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '108', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '109', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '109', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '110', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '110', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '111', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '111', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+        { invest_id: '112', date: 'Baran', amount: '2000', inno_id: '23256547',invest_id: '112', investor_ref: '21365214', payment_proof: 'proof.jpg'},
+      ]}        
+      options={{
+        sorting: true
+      }}
+    />
+            </div>
+      </TabPanel>
+    </Box>
+            </div>
+        </Row>
     </Col>
 
 
