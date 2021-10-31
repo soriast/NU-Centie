@@ -1,6 +1,6 @@
 import React from "react";
 import LinesEllipsis from "react-lines-ellipsis";
-import Moment from "react-moment";
+// import Moment from "react-moment";
 
 const NewsletterCards = ({
   img,
@@ -28,7 +28,7 @@ const NewsletterCards = ({
       <div className="card_body">
         <h3 className="title">{title}</h3>
         <p className="subtitle">
-          <Moment format={"MMMM DD YYYY"} date={subtitle} />{" "}
+          {/* <Moment format={"MMMM DD YYYY"} date={subtitle} />{" "} */}
         </p>
         <LinesEllipsis
           className="description"

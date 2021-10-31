@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Col, Nav, Row , Container, Image,Modal, Form, Button} from "react-bootstrap";
+import { Col, Row , Modal, Form, Button} from "react-bootstrap";
 import SideNavBar from './SideNavBar';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
