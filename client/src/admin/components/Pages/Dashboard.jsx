@@ -2,7 +2,9 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Nav, Row ,Card, Form, Container} from "react-bootstrap";
 import SideNavBar from './SideNavBar';
-import Chart from 'react-apexcharts'
+import Chart from 'react-apexcharts';
+import  '../../css/SystemAdmin.css';
+
 
 
 function Dashboard() {
