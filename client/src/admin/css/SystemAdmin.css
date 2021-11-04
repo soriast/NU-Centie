@@ -80,6 +80,18 @@
   #ContainerNavItemDropDown:hover {
     background-color: #32465c;
   }
+
+  /* .modal-content {
+    width: 1200px  
+    }
+  .modal-dialog {
+    margin-left: 285px !important  
+    }
+   @media screen and (max-width: 1000px) {
+  .modal-dialog {
+     margin-left: 100px !important
+   }
+ } */
   
   /* .foo {
    
