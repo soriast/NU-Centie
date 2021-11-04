@@ -15,6 +15,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import TextField from "@material-ui/core/TextField";
+// import  '../../css/SystemAdmin.css';
+
 
 
 function MyVerticallyCenteredModal(props) {
@@ -586,12 +589,12 @@ function ProductsOrders() {
             <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={valueSecond} onChange={handleChangeSecond} aria-label="basic tabs example">
-          <Tab label="Payment" {...a11yProps(0)} />
-          <Tab label="Invesment" {...a11yProps(1)} />
+          <Tab label="Payment" {...a11yProps(1)} />
+          <Tab label="Invesment" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={valueSecond} index={0}>
- {/* //Souvenir */}
+ {/* Payment */}
 
       <div style={{padding:20}}>
             <MaterialTable
@@ -667,7 +670,7 @@ function ProductsOrders() {
             </div>
       </TabPanel>
       <TabPanel value={valueSecond} index={1}>
-        {/* Book */}
+        {/* Investment */}
         <div style={{padding:20}}>
             <MaterialTable
       title=""
@@ -693,14 +696,42 @@ function ProductsOrders() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple>
-          <EditIcon />
-         <strong> Edit </strong>
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon style={{color:'red'}}/>
-         <strong style={{color:'red', marginTop:5}}>Archive</strong> 
-        </MenuItem>
+        
+          <Modal.Dialog>
+          <Modal.Header closeButton>
+            <Modal.Title>Invest Payment Confirmation</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+             <p>Invest Payment Proof</p>
+             <form>
+              <label>
+                Invest Id:  
+                <br/>  <input type="text" name="name" /> 
+              </label>
+              <br/> 
+               <label>
+                Amount:  
+                <br/>  <input type="text" name="name" />
+              </label>
+              <br/> 
+               <label>
+                Reference:  
+                <br/>  <input type="text" name="name" />
+              </label>
+              <br/> 
+               <label>
+                Date:  
+                <br/>  <input type="text" name="name" />
+              </label>
+            </form>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary">Cancel</Button>
+            <Button variant="primary">Verify Payment</Button>
+          </Modal.Footer>
+          </Modal.Dialog>
       </StyledMenu>
 
                  </div>
