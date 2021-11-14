@@ -76,7 +76,7 @@ router.post('/', (req,res) => {
             connection.release(); //return the connection to pool
             
             if(!err){
-                res.send(`Investment Transaction with the investment_id: ${params.invest_id} has been added`);
+                res.send(`Your investment Transaction has been added`);
             } else {
                 console.log(err);
             }

@@ -75,9 +75,13 @@ export default function InnovationSecondPage(){
             style={cardStyle}
             component="img"
             height="194" 
-            image={innovation.innovation_pictures}
+            image={`data:image/jpeg;base64,${Buffer.from(innovation.innovation_pictures?.data).toString(
+              `base64`
+            )}`}
           />
         </Grid>
+
+        
         <Grid item component={Card} xs={4} md={8} elevation={10} display='block'>
           <CardContent style={cardStyle}>
             <Typography variant="h5" color="primary">

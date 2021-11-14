@@ -61,7 +61,10 @@ export default function InnovationThree() {
                 <Grid item xs={5}>
                     <div className = "in3_1">
                         <h2>INVEST</h2>
-                        <img src={innovation.innovation_pictures}/>
+                        <img src={`data:image/jpeg;base64,${Buffer.from(innovation.innovation_pictures?.data).toString(
+            `base64`
+          )}`}
+                        />
                         <h3>{innovation.innovation_title}</h3>
                         <p>Innovator/s: #{innovation.innovator_id}</p>
                         <p>{innovation.innovation_description}</p>

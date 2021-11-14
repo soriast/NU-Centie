@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { makeStyles, Button, TextField, ButtonBase, Grid, Step, StepLabel, Stepper, Typography, Container } from '@material-ui/core';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -6,7 +6,17 @@ import './Multistep.css'
 import Gcash from '../../../assets/gcash.png'
 import Paypal from '../../../assets/paypal.png'
 import Swal from 'sweetalert2'
+import { useLocation } from "react-router"
+import Axios from 'axios';
+
+
+
+
 export default function Multistepform() {
+
+    const location = useLocation()
+    const innovation = location.state.innovation
+  
     const [data, setData] = useState({
         full_name: "",
         contact_number: "",
@@ -24,11 +34,31 @@ export default function Multistepform() {
 
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
+
+        const investment = {
+            invest_amount    : formData.amount,
+            invest_date      : "2021-10-02",
+            innovation_id    : innovation.innovation_id,
+            investor_id      : 1,
+            invest_reference : formData.recieptNumber,
+            invest_proofPayment : formData.uploadProof
+        }
+            try{
+                Axios.post('http://localhost:3003/api/investment',investment).then((response)=>
+                {
+                    if(response.status == 200){
+                        console.log(response.data);
+                    }else{
+                        console.log('Error Saving Data');
+                    }
+                },[])
+            }catch(e){
+                console.log(e);
+            }
     };
 
     const handleNextStep = (newData, final = false) => {
         setData((prev) => ({ ...prev, ...newData }));
-
         if (final) {
             makeRequest(newData);
             return;
@@ -124,6 +154,7 @@ const StepOne = (props) => {
 const stepTwoValidationSchema = Yup.object({
     modeOfPayment: Yup.string().required("A radio option is required").label("Mode of Payment"),
 });
+
 
 const StepTwo = (props) => {
     const classes = useStyles();
