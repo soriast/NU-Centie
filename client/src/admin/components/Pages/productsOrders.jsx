@@ -159,7 +159,11 @@ function ProductsOrders() {
     setValueSecond(newValue);
   };
 
-  //Ps. please don't delete this shit again
+  const [valueThird, setValueThird] = React.useState(0);
+  const handleChangeThird = (event, newValue) => {
+    setValueThird(newValue);
+  };
+
   //Variable for innovation List
   const [innovationList, setInnovationList] = React.useState([]);
 
@@ -606,12 +610,12 @@ function ProductsOrders() {
             <div style={{ padding: 20 }}>
               <Box sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                  <Tabs value={valueSecond} onChange={handleChangeSecond} aria-label="basic tabs example">
+                  <Tabs value={valueThird} onChange={handleChangeThird} aria-label="basic tabs example">
                     <Tab label="Payment" {...a11yProps(1)} />
                     <Tab label="Invesment" {...a11yProps(2)} />
                   </Tabs>
                 </Box>
-                <TabPanel value={valueSecond} index={0}>
+                <TabPanel value={valueThird} index={0}>
                   {/* Payment */}
 
                   <div style={{ padding: 20 }}>
@@ -687,7 +691,7 @@ function ProductsOrders() {
                     />
                   </div>
                 </TabPanel>
-                <TabPanel value={valueSecond} index={1}>
+                <TabPanel value={valueThird} index={1}>
                   {/* Investment */}
                   <div style={{ padding: 20 }}>
                     <MaterialTable
@@ -700,7 +704,7 @@ function ProductsOrders() {
                         { title: 'Innovation ID', field: 'innovation_id' },
                         { title: 'Investor ID', field: 'investor_id' },
                         { title: 'Invest Reference', field: 'invest_reference' },
-                        { title: 'Payment Proof', field: 'invest_proofPayment' },
+                        // { title: 'Payment Proof', field: 'invest_proofPayment' },
                         {
                           title: '',
                           render: rowData => <div style={{ cursor: 'pointer' }}>
