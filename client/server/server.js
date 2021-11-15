@@ -23,5 +23,5 @@ app.use("/", productRoutes);
 app.use("/", adminRoutes);
 
 app.listen(3003, () => {
-  console.log("Running on port 3001");
+  console.log("Running on port 3003");
 });

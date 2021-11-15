@@ -1,4 +1,4 @@
-import React , {useState}from 'react'
+import React , {useState, useEffect}from 'react'
 import { Col, Form, Row ,Tab, Container, Image, Overlay, OverlayTrigger, Button, Modal} from "react-bootstrap";
 import SideNavBar from './SideNavBar';
 import MaterialTable from 'material-table';
@@ -11,6 +11,7 @@ import Divider from '@mui/material/Divider';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import  '../../css/SystemAdmin.css';
+import Axios from 'axios';
 
 
 function MyVerticallyCenteredModal(props) {
@@ -106,22 +107,23 @@ function Exhibits() {
     setAnchorEl(null);
   };
 
-    var data = [
-        { user_id: '101', firstname: 'Baran', lastname: 'Musfet', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '102', firstname: 'Baran', lastname: 'Longan', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '103', firstname: 'Baran', lastname: 'Musfet', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '104', firstname: 'Baran', lastname: 'Longan', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '105', firstname: 'Baran', lastname: 'Musfet', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '106', firstname: 'Baran', lastname: 'Longan', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '107', firstname: 'Baran', lastname: 'Musfet', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '108', firstname: 'Baran', lastname: 'Longan', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '109', firstname: 'Baran', lastname: 'Musfet', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '110', firstname: 'Baran', lastname: 'Longan', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '111', firstname: 'Baran', lastname: 'Musfet', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-        { user_id: '112', firstname: 'Baran', lastname: 'Longan', email: 'ZeryaBetül@gmail.com' ,contact_number:'090807064578', address: '2529 AU' },
-      ];
+   
    
       const [modalShow, setModalShow] = React.useState(false);
+
+
+      // Exhibit
+   const [exhibitlist, setexhibitlist] = useState([]);
+   useEffect(() => {
+     Axios.get("http://localhost:3003/api/getExhibit")
+       .then((res) => {
+         console.log(res);
+         setexhibitlist(res.data);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }, []);
 
    
     return (
@@ -144,9 +146,10 @@ function Exhibits() {
       title=""
       columns={[
         { title: 'Exhibit ID', field: 'exhibit_id' },
-        { title: 'Year', field: 'year' },
-        { title: 'Term', field: 'term'},
-        { title: 'Date', field: 'date'},
+        { title: 'Exhibit Name', field: 'exhibit_name' },
+        { title: 'Year', field: 'exhibit_year' },
+        { title: 'Term', field: 'exhibit_term'},
+        { title: 'Date', field: 'exhibit_date'},
         {
             title: '',
             render: rowData => <div style={{cursor:'pointer'}}> 
@@ -191,20 +194,7 @@ function Exhibits() {
             onClick: (event) => alert("You want to add a new row")
           }
       ]}
-      data={[
-        { exhibit_id: '101', year: 'Baran', term: 'Musfet', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '102', year: 'Baran', term: 'Longan', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '103', year: 'Baran', term: 'Musfet', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '104', year: 'Baran', term: 'Longan', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '105', year: 'Baran', term: 'Musfet', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '106', year: 'Baran', term: 'Longan', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '107', year: 'Baran', term: 'Musfet', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '108', year: 'Baran', term: 'Longan', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '109', year: 'Baran', term: 'Musfet', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '110', year: 'Baran', term: 'Longan', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '111', year: 'Baran', term: 'Musfet', date: 'ZeryaBetül@gmail.com' },
-        { exhibit_id: '112', year: 'Baran', term: 'Longan', date: 'ZeryaBetül@gmail.com' },
-      ]}        
+      data={exhibitlist}        
       options={{
         sorting: true
       }}

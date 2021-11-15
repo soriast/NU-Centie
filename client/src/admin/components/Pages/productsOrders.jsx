@@ -22,6 +22,7 @@ import Axios from 'axios';
 
 
 function MyVerticallyCenteredModal(props) {
+
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
@@ -184,6 +185,114 @@ function ProductsOrders() {
       },[]);
   }
 
+  
+  // Products
+  const [productlist, setproductlist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getProducts")
+      .then((res) => {
+        console.log(res);
+        setproductlist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+   
+  // Orders
+  const [orderlist, setorderlist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getOrders")
+      .then((res) => {
+        console.log(res);
+        setorderlist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+
+    
+  // Souvenirs
+  const [souvenirslist, setsouvenirslist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getSouvenirs")
+      .then((res) => {
+        console.log(res);
+        setsouvenirslist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+   // Book
+   const [booklist, setbooklist] = useState([]);
+   useEffect(() => {
+     Axios.get("http://localhost:3003/api/getBook")
+       .then((res) => {
+         console.log(res);
+         setbooklist(res.data);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }, []);
+
+
+   // Innovation
+   const [innovationlist, setinnovationlist] = useState([]);
+   useEffect(() => {
+     Axios.get("http://localhost:3003/api/getInnovations")
+       .then((res) => {
+         console.log(res);
+         setinnovationlist(res.data);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }, []);
+
+
+   
+// Payment
+const [paymentlist, setpaymentlist] = useState([]);
+useEffect(() => {
+  Axios.get("http://localhost:3003/api/getPayments")
+    .then((res) => {
+      console.log(res);
+      setpaymentlist(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, []);
+
+
+
+   // Investment
+   const [investmentlist, setinvestmentlist] = useState([]);
+   useEffect(() => {
+     Axios.get("http://localhost:3003/api/getInvestment")
+       .then((res) => {
+         console.log(res);
+         setinvestmentlist(res.data);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   }, []);
+
+
+
+   
+
+
   return (
     useEffect(() => {
       getInnovationList();
@@ -217,11 +326,12 @@ function ProductsOrders() {
                 title=""
                 columns={[
                   { title: 'Product ID', field: 'product_id' },
-                  { title: 'Price', field: 'price' },
-                  { title: 'Status', field: 'status' },
-                  { title: 'Link', field: 'link' },
-                  { title: 'Category', field: 'category' },
-                  { title: 'Image', field: 'image' },
+                  { title: 'Price', field: 'product_price' },
+                  { title: 'Status', field: 'product_status' },
+                  { title: 'Link', field: 'product_link',render: (row) => {
+                   return <a href={row.product_link}>{String(row.product_link)} </a>
+                  }  },
+                  { title: 'Category', field: 'product_category' },
                   { title: 'Exhibit', field: 'exhibit_id' },
                   {
                     title: '',
@@ -267,20 +377,7 @@ function ProductsOrders() {
                     onClick: (event) => alert("You want to add a new row")
                   }
                 ]}
-                data={[
-                  { product_id: '101', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '101' },
-                  { product_id: '102', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '102' },
-                  { product_id: '103', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '103' },
-                  { product_id: '104', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '104' },
-                  { product_id: '105', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '105' },
-                  { product_id: '106', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '106' },
-                  { product_id: '107', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '107' },
-                  { product_id: '108', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '108' },
-                  { product_id: '109', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '109' },
-                  { product_id: '110', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '110' },
-                  { product_id: '111', price: 100, status: 'Pending', link: 'www.google.com', category: 'books', image: 'www.google.com', exhibit_id: '111' },
-                  { product_id: '112', price: 100, status: 'Pending', link: 'www.google.com', category: 'Souvenir', image: 'www.google.com', exhibit_id: '112' },
-                ]}
+                data={productlist}
                 options={{
                   sorting: true
                 }}
@@ -293,7 +390,9 @@ function ProductsOrders() {
                   { title: 'Order ID', field: 'order_id' },
                   { title: 'Order Date', field: 'order_date' },
                   { title: 'Product ID', field: 'product_id' },
-                  { title: 'Payment Proof', field: 'payment_proof' },
+                  // { title: 'Payment Proof', render:(row) => {
+                  //   return <p>{row.payment_proof}</p>
+                  // } },
                   { title: 'Payment Type', field: 'payment_total' },
                   { title: 'Order Total', field: 'order_total' },
 
@@ -341,20 +440,7 @@ function ProductsOrders() {
                     onClick: (event) => alert("You want to add a new row")
                   }
                 ]}
-                data={[
-                  { order_id: '101', order_date: '10-12-2021', product_id: '101', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '102', order_date: '10-12-2021', product_id: '102', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '103', order_date: '10-12-2021', product_id: '103', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '104', order_date: '10-12-2021', product_id: '104', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '105', order_date: '10-12-2021', product_id: '105', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '106', order_date: '10-12-2021', product_id: '106', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '107', order_date: '10-12-2021', product_id: '107', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '108', order_date: '10-12-2021', product_id: '108', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '109', order_date: '10-12-2021', product_id: '109', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '110', order_date: '10-12-2021', product_id: '110', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '111', order_date: '10-12-2021', product_id: '111', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                  { order_id: '112', order_date: '10-12-2021', product_id: '112', payment_proof: 'www.google.com', payment_total: 100, order_total: 200 },
-                ]}
+                data={orderlist}
                 options={{
                   sorting: true
                 }}
@@ -388,9 +474,9 @@ function ProductsOrders() {
                       title=""
                       columns={[
                         { title: 'Souvenir ID', field: 'souvenir_id' },
-                        { title: 'Souvenir Name', field: 'souvenirname' },
-                        { title: 'Souvenir Description', field: 'souvenir_desc' },
-                        { title: 'Seller ID', field: 'seller_id' },
+                        { title: 'Souvenir Name', field: 'souvenir_name' },
+                        { title: 'Souvenir Description', field: 'souvenir_description' },
+                        { title: 'Seller ID', field: 'user_id' },
                         { title: 'Product ID', field: 'product_id' },
                         {
                           title: '',
@@ -436,20 +522,7 @@ function ProductsOrders() {
                           onClick: (event) => alert("You want to add a new row")
                         }
                       ]}
-                      data={[
-                        { souvenir_id: '101', souvenirname: 'Baran', souvenir_desc: 'Musfet', seller_id: 1001, product_id: 101 },
-                        { souvenir_id: '102', souvenirname: 'Baran', souvenir_desc: 'Longan', seller_id: 1001, product_id: 102 },
-                        { souvenir_id: '103', souvenirname: 'Baran', souvenir_desc: 'Musfet', seller_id: 1001, product_id: 103 },
-                        { souvenir_id: '104', souvenirname: 'Baran', souvenir_desc: 'Longan', seller_id: 1001, product_id: 104 },
-                        { souvenir_id: '105', souvenirname: 'Baran', souvenir_desc: 'Musfet', seller_id: 1001, product_id: 105 },
-                        { souvenir_id: '106', souvenirname: 'Baran', souvenir_desc: 'Longan', seller_id: 1001, product_id: 106 },
-                        { souvenir_id: '107', souvenirname: 'Baran', souvenir_desc: 'Musfet', seller_id: 1001, product_id: 107 },
-                        { souvenir_id: '108', souvenirname: 'Baran', souvenir_desc: 'Longan', seller_id: 1001, product_id: 108 },
-                        { souvenir_id: '109', souvenirname: 'Baran', souvenir_desc: 'Musfet', seller_id: 1001, product_id: 109 },
-                        { souvenir_id: '110', souvenirname: 'Baran', souvenir_desc: 'Longan', seller_id: 1001, product_id: 110 },
-                        { souvenir_id: '111', souvenirname: 'Baran', souvenir_desc: 'Musfet', seller_id: 1001, product_id: 111 },
-                        { souvenir_id: '112', souvenirname: 'Baran', souvenir_desc: 'Longan', seller_id: 1001, product_id: 112 },
-                      ]}
+                      data={souvenirslist}
                       options={{
                         sorting: true
                       }}
@@ -463,9 +536,9 @@ function ProductsOrders() {
                       title=""
                       columns={[
                         { title: 'Book ID', field: 'book_id' },
-                        { title: 'Book Name', field: 'bookname' },
-                        { title: 'Book Author', field: 'author' },
-                        { title: 'Book Description', field: 'book_desc' },
+                        { title: 'Book Name', field: 'book_name' },
+                        { title: 'Book Author', field: 'book_author' },
+                        { title: 'Book Description', field: 'book_description' },
                         { title: 'Product ID', field: 'product_id' },
                         {
                           title: '',
@@ -511,20 +584,7 @@ function ProductsOrders() {
                           onClick: (event) => alert("You want to add a new row")
                         }
                       ]}
-                      data={[
-                        { book_id: '101', bookname: 'Baran', author: 'Musfet', book_desc: 'ZeryaBetül@gmail.com', product_id: '101' },
-                        { book_id: '102', bookname: 'Baran', author: 'Longan', book_desc: 'ZeryaBetül@gmail.com', product_id: '102' },
-                        { book_id: '103', bookname: 'Baran', author: 'Musfet', book_desc: 'ZeryaBetül@gmail.com', product_id: '103' },
-                        { book_id: '104', bookname: 'Baran', author: 'Longan', book_desc: 'ZeryaBetül@gmail.com', product_id: '104' },
-                        { book_id: '105', bookname: 'Baran', author: 'Musfet', book_desc: 'ZeryaBetül@gmail.com', product_id: '105' },
-                        { book_id: '106', bookname: 'Baran', author: 'Longan', book_desc: 'ZeryaBetül@gmail.com', product_id: '106' },
-                        { book_id: '107', bookname: 'Baran', author: 'Musfet', book_desc: 'ZeryaBetül@gmail.com', product_id: '107' },
-                        { book_id: '108', bookname: 'Baran', author: 'Longan', book_desc: 'ZeryaBetül@gmail.com', product_id: '108' },
-                        { book_id: '109', bookname: 'Baran', author: 'Musfet', book_desc: 'ZeryaBetül@gmail.com', product_id: '109' },
-                        { book_id: '110', bookname: 'Baran', author: 'Longan', book_desc: 'ZeryaBetül@gmail.com', product_id: '110' },
-                        { book_id: '111', bookname: 'Baran', author: 'Musfet', book_desc: 'ZeryaBetül@gmail.com', product_id: '111' },
-                        { book_id: '112', bookname: 'Baran', author: 'Longan', book_desc: 'ZeryaBetül@gmail.com', product_id: '112' },
-                      ]}
+                      data={booklist}
                       options={{
                         sorting: true
                       }}
@@ -624,7 +684,7 @@ function ProductsOrders() {
                       columns={[
                         { title: 'Payment ID', field: 'payment_id' },
                         { title: 'Payment Type', field: 'payment_type' },
-                        { title: 'Payment Proof', field: 'payment_proof' },
+                        // { title: 'Payment Proof', field: 'payment_proof' },
                         { title: 'Order ID', field: 'order_id' },
                         { title: 'User ID', field: 'user_id' },
                         {
@@ -671,20 +731,7 @@ function ProductsOrders() {
                           onClick: (event) => alert("You want to add a new row")
                         }
                       ]}
-                      data={[
-                        { payment_id: '101', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 101 },
-                        { payment_id: '102', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 102 },
-                        { payment_id: '103', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 103 },
-                        { payment_id: '104', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 104 },
-                        { payment_id: '105', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 105 },
-                        { payment_id: '106', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 106 },
-                        { payment_id: '107', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 107 },
-                        { payment_id: '108', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 108 },
-                        { payment_id: '109', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 109 },
-                        { payment_id: '110', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 110 },
-                        { payment_id: '111', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 111 },
-                        { payment_id: '112', payment_type: 'gcash', payment_proof: 'receipt', order_id: 1001, user_id: 112 },
-                      ]}
+                      data={paymentlist}
                       options={{
                         sorting: true
                       }}

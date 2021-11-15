@@ -179,7 +179,7 @@ function Users() {
 
   const [userslist, setuserslist] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:5000/api/getUsers")
+    Axios.get("http://localhost:3003/api/getUsers")
       .then((res) => {
         console.log(res);
         setuserslist(res.data);
