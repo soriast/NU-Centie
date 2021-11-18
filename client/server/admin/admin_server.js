@@ -76,7 +76,7 @@ router.get("/api/getProducts", (req, res) => {
       connection.release();
 
       if (!err) {
-        console.log(rows);
+        // console.log(rows);
         res.send(rows);
       } else {
         console.log(err);
@@ -186,6 +186,24 @@ router.get("/api/getInnovations", (req, res) => {
   });
 });
 
+
+
+// Innovators
+router.get("/api/getInnovators", (req, res) => {
+  pool.getConnection((err, connection) => {
+    if (err) throw err;
+    // console.log("connected as id ${connection.threadId}");
+
+    connection.query("SELECT * FROM innovators WHERE innovator_isArchived = 'False'", (err, result) => {
+      connection.release();
+      if (err == null) {
+        res.send(result);
+      } else {
+        console.log(err);
+      }
+    });
+  });
+});
 
 // Payment
 router.get("/api/getPayments", (req, res) => {
