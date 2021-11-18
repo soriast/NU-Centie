@@ -1,12 +1,13 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardContent from "@material-ui/core/CardContent";
-import { CardMedia, Typography } from "@material-ui/core";
-import { CardActions } from "@material-ui/core";
-import { Button } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { CardMedia, 
+  Typography, 
+  CardHeader, 
+  CardContent, 
+  Card,
+  CardActions,
+  Button} from "@material-ui/core";
 import { Link } from "react-router-dom";
+
 
 
 export default function InnovationCard({ innovation }) {

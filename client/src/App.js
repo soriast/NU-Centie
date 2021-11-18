@@ -51,14 +51,14 @@ function App() {
     <Router>
       <Suspense fallback={<div />}>
         <div>
-          {/* <NavBar /> */}
+          <NavBar />
         </div>
 
         <Switch>
-        <Route path="/" component={MainAdmin} />
-          {/* <Route path="/" exact>
+        {/* <Route path="/" component={MainAdmin} /> */}
+          <Route path="/" exact>
             <Redirect to="/products/innovations" />
-          </Route> */}
+          </Route>
           <Route path="/products/:category" component={Products} />
           <Route path="/product/:id" component={ProductView} />
           <Route path="/cart" component={Cart} />

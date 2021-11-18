@@ -605,6 +605,7 @@ useEffect(() => {
                         { title: 'Innovation Status', field: 'innovation_status' },
                         { title: 'Product ID', field: 'product_id' },
                         { title: 'Innovator ID', field: 'innovator_id' },
+                        { title: 'Price', field: 'innovation_price' },
                         {
                           title: '',
                           render: rowData => <div style={{ cursor: 'pointer' }}>
@@ -750,7 +751,8 @@ useEffect(() => {
                         { title: 'Amount', field: 'invest_amount' },
                         { title: 'Innovation ID', field: 'innovation_id' },
                         { title: 'Investor ID', field: 'investor_id' },
-                        { title: 'Invest Reference', field: 'invest_reference' },
+                        { title: 'Reference Number', field: 'invest_refNumber' },
+                        { title: 'Payment Method', field: 'invest_pMethod' },
                         // { title: 'Payment Proof', field: 'invest_proofPayment' },
                         {
                           title: '',

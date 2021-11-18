@@ -34,14 +34,16 @@ export default function Multistepform() {
 
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
+        console.log('Remarks: ', formData.Remarks);
 
         const investment = {
             invest_amount    : formData.amount,
             invest_date      : "2021-10-02",
             innovation_id    : innovation.innovation_id,
             investor_id      : 1,
-            invest_reference : formData.recieptNumber,
-            invest_proofPayment : formData.uploadProof
+            invest_refNumber : formData.recieptNumber,
+            invest_proofPayment : formData.uploadProof,
+            invest_pMethod      : formData.modeOfPayment
         }
             try{
                 Axios.post('http://localhost:3003/api/investment',investment).then((response)=>
@@ -262,7 +264,7 @@ const StepThree = (props) => {
                     <h3>Amount Invested: ₱{values.amount}</h3>
                     <h3>Payment Information</h3>
                     <div className="f1_div">
-                        <p>Reciept Number: </p>
+                        <p>Reference Number: </p>
                         <Field name="recieptNumber" className="f1_input" />
                     </div>
                     <ErrorMessage name="recieptNumber">{msg => <div className="f1_error">{msg}</div>}</ErrorMessage>
