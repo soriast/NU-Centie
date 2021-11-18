@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
-import { makeStyles, Button, TextField, ButtonBase, Grid, Step, StepLabel, Stepper, Typography, Container } from '@material-ui/core';
+import { makeStyles, Button, TextField, ButtonBase, Grid, Step, StepLabel, Stepper, Typography, Container} from '@material-ui/core';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './Multistep.css'
 import Gcash from '../../../assets/gcash.png'
 import Paypal from '../../../assets/paypal.png'
 import Swal from 'sweetalert2'
-import { useLocation } from "react-router"
+import { Redirect, useLocation } from "react-router"
 import Axios from 'axios';
-
-
-
+import {useHistory} from "react-router-dom"
 
 export default function Multistepform() {
 
@@ -25,7 +23,7 @@ export default function Multistepform() {
         modeOfPayment: "",
         recieptNumber: "",
         uploadProof: "",
-        Remarks: "",
+        remarks: "",
     });
 
 
@@ -34,7 +32,8 @@ export default function Multistepform() {
 
     const makeRequest = (formData) => {
         console.log("Form Submitted", formData);
-        console.log('Remarks: ', formData.Remarks);
+        console.log('Remarks: ', formData.remarks);
+        console.log('img: ', formData.uploadProof);
 
         const investment = {
             invest_amount    : formData.amount,
@@ -42,7 +41,7 @@ export default function Multistepform() {
             innovation_id    : innovation.innovation_id,
             investor_id      : 1,
             invest_refNumber : formData.recieptNumber,
-            invest_proofPayment : formData.uploadProof,
+            invest_proofPayment : formData.proofPayment,
             invest_pMethod      : formData.modeOfPayment
         }
             try{
@@ -228,23 +227,25 @@ const StepTwo = (props) => {
 const stepThreeValidationSchema = Yup.object({
     //modeOfPayment: Yup.string().required("A radio option is required").label("Mode of Payment"),
     recieptNumber: Yup.number().required().label("Reciept Number"),
-    /*uploadProof: Yup.object().shape({
-        text: Yup.string().required("A text is required"),
-        file: Yup
-            .mixed()
-            .required("A file is required")
-            .test(
-                "fileSize",
-                "File too large",
-                value => value && value.size <= FILE_SIZE
-            )
-            .test(
-                "fileFormat",
-                "Unsupported Format",
-                value => value && SUPPORTED_FORMATS.includes(value.type)
-            )
-    }),*/
-    remarks: Yup.string().required().label("Remarks"),
+
+    // uploadProof: Yup.object().shape({
+    //     text: Yup.string().required("A text is required"),
+    //     file: Yup
+    //         .mixed()
+    //         .required("A file is required")
+    //         .test(
+    //             "fileSize",
+    //             "File too large",
+    //             value => value && value.size <= FILE_SIZE
+    //         )
+    //         .test(
+    //             "fileFormat",
+    //             "Unsupported Format",
+    //             value => value && SUPPORTED_FORMATS.includes(value.type)
+    //         )
+    // }),
+
+    remarks: Yup.string().required().label("remarks")
 });
 
 const StepThree = (props) => {
@@ -259,7 +260,7 @@ const StepThree = (props) => {
             initialValues={props.data}
             onSubmit={handleSubmit}
         >
-            {({ values }) => (
+            {({ values, setFieldValue }) => (
                 <Form className="form1">
                     <h3>Amount Invested: ₱{values.amount}</h3>
                     <h3>Payment Information</h3>
@@ -271,7 +272,27 @@ const StepThree = (props) => {
                     <div className="f1_div">
                         <p>Upload File: </p>
                         {/*<Field name="uploadProof" type={File} className="f1_input" />*/}
-                        <input id="file" name="file" type="file" className="f1_input" />
+                        <Field
+                            name="uploadProof"
+                            render={({  /* { name, value, onChange, onBlur } */ }) => (
+                                <input type="file" placeholder="uploadProof" class="f1_input" 
+                                onChange={(e) => { 
+                                    const fileReader = new FileReader();
+                                    fileReader.onloadend  = () => {
+                                      if (fileReader.readyState === 2) {
+                                          console.log(fileReader.result);
+                                          console.log(fileReader);
+                                          console.log(e.target.files[0]);
+                                          setFieldValue('proofPayment', fileReader.result);
+                                        //   setFieldValue('uploadProof', fileReader);
+                                      }
+                                    };
+                                    fileReader.readAsDataURL(e.target.files[0]);
+                                  }}
+                                  />
+                            )}
+                        />
+                        {/* <input id="file" name="uploadProof" type="file" className="f1_input" /> */}
                     </div>
                     <ErrorMessage name="uploadProof">{msg => <div className="f1_error">{msg}</div>}</ErrorMessage>
                     <div className="f1_div">
@@ -322,13 +343,19 @@ var cardStyle = {
 }
 const StepFour = (props) => {
     const classes = useStyles();
+    let history = useHistory();
     const handleSubmit = (values) => {
         Swal.fire({
             icon: 'success',
             title: 'Success',
             text: 'Thank you for Investing! We will review your payment for 3-5 days',
         })
+        .then((e) => {
+        
+            history.push('/innovation');
+        });
         props.next(values, true);
+       
     };
 
     return (
