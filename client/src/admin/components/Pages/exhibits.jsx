@@ -146,7 +146,7 @@ function Exhibits() {
       title=""
       columns={[
         { title: 'Exhibit ID', field: 'exhibit_id' },
-        { title: 'Exhibit Name', field: 'exhibit_name' },
+        { title: 'Exhibit Namex', field: 'exhibit_name' },
         { title: 'Year', field: 'exhibit_year' },
         { title: 'Term', field: 'exhibit_term'},
         { title: 'Date', field: 'exhibit_date'},

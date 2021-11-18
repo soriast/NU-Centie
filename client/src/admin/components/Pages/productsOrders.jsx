@@ -327,12 +327,7 @@ useEffect(() => {
                 columns={[
                   { title: 'Product ID', field: 'product_id' },
                   { title: 'Price', field: 'product_price' },
-                  { title: 'Status', field: 'product_status' },
-                  { title: 'Link', field: 'product_link',render: (row) => {
-                   return <a href={row.product_link}>{String(row.product_link)} </a>
-                  }  },
                   { title: 'Category', field: 'product_category' },
-                  { title: 'Exhibit', field: 'exhibit_id' },
                   {
                     title: '',
                     render: rowData => <div style={{ cursor: 'pointer' }}>
