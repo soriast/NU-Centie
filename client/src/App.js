@@ -41,6 +41,7 @@ const Library = lazy(() => import("./pages/Library/Library"));
 const LibraryView = lazy(() => import("./pages/Library/ViewLibrary"));
 const ContactUs = lazy(() => import("./ContactUs/ContactUs"));
 const PrivacyPolicy = lazy(() => import("./PrivacyPolicy/PrivacyPolicy"));
+const Login = lazy(() => import("./Login/Login"));
 
 const MainAdmin = lazy(() => import("./admin/components/Main"));
 const MainExhibitPage = lazy(() => import("./Exhibit/pages/Main-Exhibit-Page/main-exhibit-page"));
@@ -59,6 +60,7 @@ function App() {
           <Route path="/" exact>
             <Redirect to="/products/innovations" />
           </Route>
+          <Route path="/login" component={Login}/>
           <Route path="/products/:category" component={Products} />
           <Route path="/product/:id" component={ProductView} />
           <Route path="/cart" component={Cart} />
