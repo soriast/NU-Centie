@@ -1,6 +1,6 @@
 import logo from '../assets/NU-Logo-home.png';
 import { useForm } from 'react-hook-form';
-import '../scss/Login.css';
+import '../stylesLogin/Login.css';
 
 export default function Login() {
   const {
@@ -25,6 +25,7 @@ export default function Login() {
           <label htmlFor="email-address" className="form-label-margin">
             Email Address
           </label>
+          
           <input
             type="email"
             className="form-control"
