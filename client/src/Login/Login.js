@@ -1,5 +1,6 @@
 import logo from '../assets/NU-Logo-home.png';
 import { useForm } from 'react-hook-form';
+import '../scss/Login.css';
 
 export default function Login() {
   const {
