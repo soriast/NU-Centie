@@ -31,9 +31,6 @@ export default function Multistepform() {
     const [currentStep, setCurrentStep] = useState(0);
 
     const makeRequest = (formData) => {
-        console.log("Form Submitted", formData);
-        console.log('Remarks: ', formData.remarks);
-        console.log('img: ', formData.uploadProof);
 
         const investment = {
             invest_amount    : formData.amount,
@@ -83,7 +80,6 @@ export default function Multistepform() {
         return ["Personal Information", "Payment Method", "Upload Proof of Payment", "Confirmation"];
     }
     const inStep = getSteps();
-    //console.log("data", data);
 
     return <div className="App">
         <Stepper alternativeLabel activeStep={currentStep}>
@@ -109,7 +105,6 @@ const stepOneValidationSchema = Yup.object({
 const StepOne = (props) => {
     const classes = useStyles();
     const handleSubmit = (values) => {
-        //console.log(values);
         props.next(values);
     };
 
@@ -160,7 +155,6 @@ const stepTwoValidationSchema = Yup.object({
 const StepTwo = (props) => {
     const classes = useStyles();
     const handleSubmit = (values) => {
-        //console.log(values);
         props.next(values);
     };
 
@@ -280,9 +274,6 @@ const StepThree = (props) => {
                                     const fileReader = new FileReader();
                                     fileReader.onloadend  = () => {
                                       if (fileReader.readyState === 2) {
-                                          console.log(fileReader.result);
-                                          console.log(fileReader);
-                                          console.log(e.target.files[0]);
                                           setFieldValue('proofPayment', fileReader.result);
                                         //   setFieldValue('uploadProof', fileReader);
                                       }
