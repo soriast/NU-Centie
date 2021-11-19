@@ -95,7 +95,7 @@ function a11yProps(index) {
 }
 
 
-function ProductsOrders() {
+function ProductsOrders(props) {
   const StyledMenu = styled((props) => (
     <Menu
       elevation={0}
@@ -299,6 +299,8 @@ function ProductsOrders() {
 
   const [show5, setShow5] = useState(false);
 
+  const [show6, setShow6] = useState(false);
+
   const handleClose1 = () => setShow(false);
   const handleShow1 = () => setShow(true);
 
@@ -316,6 +318,9 @@ function ProductsOrders() {
 
   const handleClose6 = () => setShow5(false);
   const handleShow6 = () => setShow5(true);
+
+  const handleClose7 = () => setShow6(false);
+  const handleShow7 = () => setShow6(true);
 
 
   <Modal.Dialog>
@@ -397,9 +402,6 @@ function ProductsOrders() {
 
   }
 
-
-
-
   return (
     useEffect(() => {
       getInnovationList();
@@ -411,16 +413,25 @@ function ProductsOrders() {
 
     <div style={{ marginTop: 100 }}>
 
-      {/* modal para sa add products */}
-      <Modal show={show} onHide={handleClose1} animation={false}>
+{/* Products*/}
+<Modal
+      {...props}
+      show={show}
+      onHide={handleClose1} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      {/* <Modal show={show} onHide={handleClose1} animation={false}> */}
         <Modal.Header closeButton>
-          <Modal.Title>Invest Payment Confirmation</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">Products & Orders</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <p>Add New Product</p>
+          <h4>Add New Product</h4>
           <form>
-            <div style={{ marginBottom: " 10%" }}>
+            <div style={{ marginBottom: " 25%" }}>
               <label>
                 Product Id:
                 <br />  <input type="text" name="name" />
@@ -468,15 +479,24 @@ function ProductsOrders() {
       </Modal>
 
       {/* Orders View */}
-      <Modal show={show1} onHide={handleClose2} animation={false}>
+      <Modal
+      {...props}
+      show={show1}
+      onHide={handleClose2} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      {/* <Modal show={show1} onHide={handleClose2} animation={false}> */}
         <Modal.Header closeButton>
-          <Modal.Title>Invest Payment Confirmation</Modal.Title>
+          <Modal.Title>Products & Orders</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <p>View Orders</p>
+          <h4>View Orders </h4>
           <form>
-            <div style={{ marginBottom: " 10%" }}>
+            <div style={{ marginBottom: " 26%" }}>
               <label>
                 Order Id:
                 <br />  <input type="text" name="name" />
@@ -518,16 +538,25 @@ function ProductsOrders() {
         </Modal.Footer>
       </Modal>
 
+      <Modal
+      {...props}
+      show={show2}
+      onHide={handleClose3} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
       {/* add souvenir */}
-      <Modal show={show2} onHide={handleClose3} animation={false}>
+      {/* <Modal show={show2} onHide={handleClose3} animation={false}> */}
         <Modal.Header closeButton>
-          <Modal.Title>Add new Souvenir </Modal.Title>
+          <Modal.Title>Product Categories </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <p>Add new Souvenir</p>
           <form>
-            <div style={{ marginBottom: " 10%" }}>
+          <p>Add New Souvenir</p>
+            <div style={{ marginBottom: " 35%" }}>
               <label>
                 Souvenir Id:
                 <br />  <input type="text" name="name" />
@@ -545,7 +574,7 @@ function ProductsOrders() {
               <br />
             </div>
             <br />
-            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+            <div style={{ marginLeft: "45%", marginTop: "-52%" }}>
               <label>
                 Souvenir ID:
                 <br />  <input type="text" name="name" />
@@ -560,20 +589,30 @@ function ProductsOrders() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose3}>OK</Button>
+        <Button variant="secondary" onClick={handleClose3}>Cancel</Button>
+          <Button variant="primary" onClick={handleClose3}>Add to List</Button>
         </Modal.Footer>
       </Modal>
 
  {/* Add New Book */}
- <Modal show={show3} onHide={handleClose4} animation={false}>
+ <Modal
+      {...props}
+      show={show3}
+      onHide={handleClose4} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+ {/* <Modal show={show3} onHide={handleClose4} animation={false}> */}
         <Modal.Header closeButton>
-          <Modal.Title>Add New Book </Modal.Title>
+          <Modal.Title>Product Categories </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <p>Add New Book</p>
           <form>
-            <div style={{ marginBottom: " 10%" }}>
+            <div style={{ marginBottom: " 35%" }}>
               <label>
                 Book Id:
                 <br />  <input type="text" name="name" />
@@ -591,7 +630,7 @@ function ProductsOrders() {
               <br />
             </div>
             <br />
-            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+            <div style={{ marginLeft: "45%", marginTop: "-52%" }}>
               <label>
                 Book Author:
                 <br />  <input type="text" name="name" />
@@ -606,20 +645,30 @@ function ProductsOrders() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose4}>OK</Button>
+        <Button variant="secondary" onClick={handleClose4}>Cancel</Button>
+          <Button variant="primary" onClick={handleClose4}>Add to List</Button>
         </Modal.Footer>
       </Modal>
 
       {/* Add New Innovation */}
-      <Modal show={show4} onHide={handleClose5} animation={false}>
+      <Modal
+      {...props}
+      show={show4}
+      onHide={handleClose5} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      {/* <Modal show={show4} onHide={handleClose5} animation={false}> */}
         <Modal.Header closeButton>
-          <Modal.Title>Add New Innovation </Modal.Title>
+          <Modal.Title>Product Categories </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <p>Add New Innovation</p>
           <form>
-            <div style={{ marginBottom: " 10%" }}>
+            <div style={{ marginBottom: " 35%" }}>
               <label>
                 Innovation Id:
                 <br />  <input type="text" name="name" />
@@ -642,7 +691,7 @@ function ProductsOrders() {
               <br />
             </div>
             <br />
-            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+            <div style={{ marginLeft: "40%", marginTop: "-66%" }}>
               <label>
                 Innovation Title:
                 <br />  <input type="text" name="name" />
@@ -652,6 +701,7 @@ function ProductsOrders() {
                 Innovation Status:
                 <br />  <input type="text" name="name" />
               </label>
+              <br />
               <label>
                 Product ID:
                 <br />  <input type="text" name="name" />
@@ -667,20 +717,31 @@ function ProductsOrders() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose5}>OK</Button>
+        <Button variant="secondary" onClick={handleClose5}>Cancel</Button>
+          <Button variant="primary" onClick={handleClose5}>Add to List</Button>
         </Modal.Footer>
       </Modal>
 
+
        {/* Payment Confirmation */}
-       <Modal show={show5} onHide={handleClose6} animation={false}>
+       <Modal
+      {...props}
+      show={show5}
+      onHide={handleClose6} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+       {/* <Modal show={show5} onHide={handleClose6} animation={false}> */}
         <Modal.Header closeButton>
-          <Modal.Title>Payment Confirmation </Modal.Title>
+          <Modal.Title>Payment </Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
           <p>Payment Confirmation</p>
           <form>
-            <div style={{ marginBottom: " 10%" }}>
+            <div style={{ marginBottom: " 40%" }}>
               PROOF OF PAYMENT
             </div>
             <br />
@@ -694,6 +755,7 @@ function ProductsOrders() {
                 Payment Type:
                 <br />  <input type="text" name="name" />
               </label>
+              <br />
               <label>
                 Order ID:
                 <br />  <input type="text" name="name" />
@@ -709,7 +771,33 @@ function ProductsOrders() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose6}>OK</Button>
+        <Button variant="secondary" onClick={handleClose6}>Cancel</Button>
+          <Button variant="primary" onClick={handleClose6}>Verify Payment</Button>
+        </Modal.Footer>
+      </Modal>
+
+       {/* Archive */}
+       <Modal
+      {...props}
+      show={show6}
+      onHide={handleClose7} 
+      animation={false}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      {/* <Modal show={show1} onHide={handleClose2} animation={false}> */}
+        <Modal.Header closeButton>
+          <Modal.Title>Archive</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <h4>Are you sure you want to delete?</h4>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose7}>Yes</Button>
+          <Button variant="primary" onClick={handleClose7}>No</Button>
         </Modal.Footer>
       </Modal>
 
@@ -765,9 +853,11 @@ function ProductsOrders() {
                             <strong> Edit </strong>
                           </div>
                         </MenuItem>
+                        {/* Archive Data */}
                         <MenuItem onClick={handleClose}>
-                          <FileCopyIcon style={{ color: 'red' }} />
+                        <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
                           <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                          </div>
                         </MenuItem>
                       </StyledMenu>
 
@@ -781,7 +871,7 @@ function ProductsOrders() {
                     tooltip: 'Add Subscriber',
                     isFreeAction: true,
                     onClick: (event, rowData) => {
-                      setModalShow(true);
+                      handleShow1();
                     }
                   },
                   {
@@ -831,9 +921,11 @@ function ProductsOrders() {
                             <strong> Edit </strong>
                           </div>
                         </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <FileCopyIcon style={{ color: 'red' }} />
+                         {/* Archive Data */}
+                        <MenuItem onClick={handleClose}>
+                        <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
                           <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                          </div>
                         </MenuItem>
                       </StyledMenu>
 
@@ -847,7 +939,7 @@ function ProductsOrders() {
                     tooltip: 'Add Subscriber',
                     isFreeAction: true,
                     onClick: (event, rowData) => {
-                      setModalShow(true);
+                      handleShow2();
                     }
                   },
                   {
@@ -916,12 +1008,13 @@ function ProductsOrders() {
                                   <strong> Edit </strong>
                                 </div>
                               </MenuItem>
-                              <MenuItem onClick={handleClose} disableRipple>
-                                <FileCopyIcon style={{ color: 'red' }} />
-                                <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                                 {/* Archive Data */}
+                              <MenuItem onClick={handleClose}>
+                                <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
+                                  <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                                </div>
                               </MenuItem>
-                            </StyledMenu>
-
+                              </StyledMenu>
                           </div>
                         }
 
@@ -932,7 +1025,7 @@ function ProductsOrders() {
                           tooltip: 'Add Subscriber',
                           isFreeAction: true,
                           onClick: (event, rowData) => {
-                            setModalShow(true);
+                            handleShow3();
                           }
                         },
                         {
@@ -981,9 +1074,11 @@ function ProductsOrders() {
                                   <strong> Edit </strong>
                                 </div>
                               </MenuItem>
-                              <MenuItem onClick={handleClose} disableRipple>
-                                <FileCopyIcon style={{ color: 'red' }} />
+                               {/* Archive Data */}
+                              <MenuItem onClick={handleClose}>
+                                <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
                                 <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                                </div>
                               </MenuItem>
                             </StyledMenu>
 
@@ -997,7 +1092,7 @@ function ProductsOrders() {
                           tooltip: 'Add Subscriber',
                           isFreeAction: true,
                           onClick: (event, rowData) => {
-                            setModalShow(true);
+                            handleShow4();
                           }
                         },
                         {
@@ -1050,12 +1145,13 @@ function ProductsOrders() {
                                   <strong> Edit </strong>
                                 </div>
                               </MenuItem>
-                              <MenuItem onClick={handleClose} disableRipple>
-                                <FileCopyIcon style={{ color: 'red' }} />
+                             {/* Archive Data */}
+                              <MenuItem onClick={handleClose}>
+                                <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
                                 <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                                </div>
                               </MenuItem>
                             </StyledMenu>
-
                           </div>
                         }
 
@@ -1066,7 +1162,7 @@ function ProductsOrders() {
                           tooltip: 'Add Subscriber',
                           isFreeAction: true,
                           onClick: (event, rowData) => {
-                            setModalShow(true);
+                            handleShow5();
                           }
                         },
                         {
@@ -1133,12 +1229,13 @@ function ProductsOrders() {
                                   <strong> Edit </strong>
                                 </div>
                               </MenuItem>
-                              <MenuItem onClick={handleClose} disableRipple>
-                                <FileCopyIcon style={{ color: 'red' }} />
-                                <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                            {/* Archive Data */}
+                              <MenuItem onClick={handleClose}>
+                               <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
+                               <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
+                               </div>
                               </MenuItem>
                             </StyledMenu>
-
                           </div>
                         }
 
@@ -1149,7 +1246,7 @@ function ProductsOrders() {
                           tooltip: 'Add Subscriber',
                           isFreeAction: true,
                           onClick: (event, rowData) => {
-                            setModalShow(true);
+                            handleShow6();
                           }
                         },
                         {
@@ -1196,41 +1293,6 @@ function ProductsOrders() {
                               onClose={handleClose}
                             >
 
-                              <Modal.Dialog>
-                                <Modal.Header closeButton>
-                                  <Modal.Title>Invest Payment Confirmation</Modal.Title>
-                                </Modal.Header>
-
-                                <Modal.Body>
-                                  <p>Invest Payment Proof</p>
-                                  <form>
-                                    <label>
-                                      Invest Id:
-                                      <br />  <input type="text" name="name" />
-                                    </label>
-                                    <br />
-                                    <label>
-                                      Amount:
-                                      <br />  <input type="text" name="name" />
-                                    </label>
-                                    <br />
-                                    <label>
-                                      Reference:
-                                      <br />  <input type="text" name="name" />
-                                    </label>
-                                    <br />
-                                    <label>
-                                      Date:
-                                      <br />  <input type="text" name="name" />
-                                    </label>
-                                  </form>
-                                </Modal.Body>
-
-                                <Modal.Footer>
-                                  <Button variant="secondary">Cancel</Button>
-                                  <Button variant="primary">Verify Payment</Button>
-                                </Modal.Footer>
-                              </Modal.Dialog>
                             </StyledMenu>
 
                           </div>
