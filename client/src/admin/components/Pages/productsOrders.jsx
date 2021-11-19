@@ -17,6 +17,9 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import TextField from "@material-ui/core/TextField";
 import Axios from 'axios';
+import ProductCategories from './ProductCategories';
+import PaymentInvestment from './PaymentInvestment';
+import ProductsOrder from './ProductsOrder';
 // import  '../../css/SystemAdmin.css';
 
 
@@ -138,155 +141,7 @@ function ProductsOrders(props) {
   }));
 
   const [modalShow, setModalShow] = React.useState(false);
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const [valueSecond, setValueSecond] = React.useState(0);
-  const handleChangeSecond = (event, newValue) => {
-    setValueSecond(newValue);
-  };
-
-  const [valueThird, setValueThird] = React.useState(0);
-  const handleChangeThird = (event, newValue) => {
-    setValueThird(newValue);
-  };
-
-  //Variable for innovation List
-  const [innovationList, setInnovationList] = React.useState([]);
-
-  //function for getting Innovations
-  function getInnovationList() {
-    Axios.get('http://localhost:3003/api/innovations').then((response) => {
-      setInnovationList(response.data);
-    }, []);
-  }
-
-  //Variable for investment List
-  const [investmentList, setInvestmentList] = useState([]);
-
-  //function for getting investment
-  function getInvestmentList() {
-    Axios.get('http://localhost:3003/api/investment').then((response) => {
-      setInvestmentList(response.data);
-    }, []);
-  }
-
-  // Products
-  const [productlist, setproductlist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getProducts")
-      .then((res) => {
-        console.log(res);
-        setproductlist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-
-  // Orders
-  const [orderlist, setorderlist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getOrders")
-      .then((res) => {
-        console.log(res);
-        setorderlist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-
-
-  // Souvenirs
-  const [souvenirslist, setsouvenirslist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getSouvenirs")
-      .then((res) => {
-        console.log(res);
-        setsouvenirslist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-  // Book
-  const [booklist, setbooklist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getBook")
-      .then((res) => {
-        console.log(res);
-        setbooklist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-  // Innovation
-  const [innovationlist, setinnovationlist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getInnovations")
-      .then((res) => {
-        console.log(res);
-        setinnovationlist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-
-  // Payment
-  const [paymentlist, setpaymentlist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getPayments")
-      .then((res) => {
-        console.log(res);
-        setpaymentlist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-
-
-  // Investment
-  const [investmentlist, setinvestmentlist] = useState([]);
-  useEffect(() => {
-    Axios.get("http://localhost:3003/api/getInvestment")
-      .then((res) => {
-        console.log(res);
-        setinvestmentlist(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+  
   const [show, setShow] = useState(false);
 
   const [show1, setShow1] = useState(false);
@@ -359,124 +214,62 @@ function ProductsOrders(props) {
     </Modal.Footer>
   </Modal.Dialog>
 
-  function PopUpModal() {
-    return (
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Invest Payment Proof</p>
-          <form>
-            <label>
-              Invest Id:
-              <br />  <input type="text" name="name" />
-            </label>
-            <br />
-            <label>
-              Amount:
-              <br />  <input type="text" name="name" />
-            </label>
-            <br />
-            <label>
-              Reference:
-              <br />  <input type="text" name="name" />
-            </label>
-            <br />
-            <label>
-              Date:
-              <br />  <input type="text" name="name" />
-            </label>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    )
+  // function PopUpModal() {
+  //   return (
+  //     <Modal show={show} onHide={handleClose}>
+  //       <Modal.Header closeButton>
+  //         <Modal.Title>Modal heading</Modal.Title>
+  //       </Modal.Header>
+  //       <Modal.Body>
+  //         <p>Invest Payment Proof</p>
+  //         <form>
+  //           <label>
+  //             Invest Id:
+  //             <br />  <input type="text" name="name" />
+  //           </label>
+  //           <br />
+  //           <label>
+  //             Amount:
+  //             <br />  <input type="text" name="name" />
+  //           </label>
+  //           <br />
+  //           <label>
+  //             Reference:
+  //             <br />  <input type="text" name="name" />
+  //           </label>
+  //           <br />
+  //           <label>
+  //             Date:
+  //             <br />  <input type="text" name="name" />
+  //           </label>
+  //         </form>
+  //       </Modal.Body>
+  //       <Modal.Footer>
+  //         <Button variant="secondary" onClick={handleClose}>
+  //           Close
+  //         </Button>
+  //         <Button variant="primary" onClick={handleClose}>
+  //           Save Changes
+  //         </Button>
+  //       </Modal.Footer>
+  //     </Modal>
+  //   )
 
-  }
+  // }
+
+
+
+ 
+
 
   return (
-    useEffect(() => {
-      getInnovationList();
-      getInvestmentList();
-    }, []),
 
 
 
 
     <div style={{ marginTop: 100 }}>
 
-{/* Products*/}
-<Modal
-      {...props}
-      show={show}
-      onHide={handleClose1} 
-      animation={false}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      {/* <Modal show={show} onHide={handleClose1} animation={false}> */}
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Products & Orders</Modal.Title>
-        </Modal.Header>
 
-        <Modal.Body>
-          <h4>Add New Product</h4>
-          <form>
-            <div style={{ marginBottom: " 25%" }}>
-              <label>
-                Product Id:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Product Price:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Product Status:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Link:
-                <br />  <input type="text" name="name" />
-              </label>
-            </div>
-            <br />
-            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
-              <label>
-                Product Category:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Product Picture:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Exhibit Id:
-                <br />  <input type="text" name="name" />
-              </label>
-            </div>
-          </form>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose1}>Cancel</Button>
-          <Button variant="primary" >Add Product</Button>
-        </Modal.Footer>
-      </Modal>
 
       {/* Orders View */}
       <Modal
@@ -538,61 +331,7 @@ function ProductsOrders(props) {
         </Modal.Footer>
       </Modal>
 
-      <Modal
-      {...props}
-      show={show2}
-      onHide={handleClose3} 
-      animation={false}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      {/* add souvenir */}
-      {/* <Modal show={show2} onHide={handleClose3} animation={false}> */}
-        <Modal.Header closeButton>
-          <Modal.Title>Product Categories </Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <form>
-          <p>Add New Souvenir</p>
-            <div style={{ marginBottom: " 35%" }}>
-              <label>
-                Souvenir Id:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Souvenir Name:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Souvenir Description:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-            </div>
-            <br />
-            <div style={{ marginLeft: "45%", marginTop: "-52%" }}>
-              <label>
-                Souvenir ID:
-                <br />  <input type="text" name="name" />
-              </label>
-              <br />
-              <label>
-                Souvenir Name:
-                <br />  <input type="text" name="name" />
-              </label>
-            </div>
-          </form>
-        </Modal.Body>
-
-        <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose3}>Cancel</Button>
-          <Button variant="primary" onClick={handleClose3}>Add to List</Button>
-        </Modal.Footer>
-      </Modal>
+      
 
  {/* Add New Book */}
  <Modal
@@ -808,524 +547,13 @@ function ProductsOrders(props) {
         </Col>
 
         <Col sm={10}>
-          <Row>
-            <div style={{ padding: 10, color: '#30408D' }}>
-              <h1>Product & Orders</h1>
-            </div>
-          </Row>
-          <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="Products" {...a11yProps(0)} />
-                <Tab label="Orders" {...a11yProps(1)} />
-              </Tabs>
-            </Box>
-            <TabPanel value={value} index={0}>
-              <MaterialTable
-                title=""
-                columns={[
-                  { title: 'Product ID', field: 'product_id' },
-                  { title: 'Price', field: 'product_price' },
-                  { title: 'Status', field: 'product_status' },
-                  {
-                    title: 'Link', field: 'product_link', render: (row) => {
-                      return <a href={row.product_link}>{String(row.product_link)} </a>
-                    }
-                  },
-                  { title: 'Category', field: 'product_category' },
-                  { title: 'Exhibit', field: 'exhibit_id' },
-                  {
-                    title: '',
-                    render: rowData => <div style={{ cursor: 'pointer' }}>
+          
+          <ProductsOrder />
+          
+          <ProductCategories />
 
-                      <MoreHorizIcon onClick={handleClick} />
-                      <StyledMenu
-                        id="demo-customized-menu"
-                        MenuListProps={{
-                          'aria-labelledby': 'demo-customized-button',
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={handleClose}>
-                          <div onClick={handleShow1}><EditIcon />
-                            <strong> Edit </strong>
-                          </div>
-                        </MenuItem>
-                        {/* Archive Data */}
-                        <MenuItem onClick={handleClose}>
-                        <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
-                          <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
-                          </div>
-                        </MenuItem>
-                      </StyledMenu>
-
-                    </div>
-                  }
-
-                ]}
-                actions={[
-                  {
-                    icon: 'add',
-                    tooltip: 'Add Subscriber',
-                    isFreeAction: true,
-                    onClick: (event, rowData) => {
-                      handleShow1();
-                    }
-                  },
-                  {
-                    icon: ArchiveIcon,
-                    tooltip: 'View Archive',
-                    isFreeAction: true,
-                    onClick: (event) => alert("You want to add a new row")
-                  }
-                ]}
-                data={[
-                  { product_id: '101', product_price: 100, product_status: 'Pending', product_link: 'www.google.com', product_category: 'books', exhibit_id: '101' },
-                ]}
-                options={{
-                  sorting: true
-                }}
-              />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <MaterialTable
-                title=""
-                columns={[
-                  { title: 'Order ID', field: 'order_id' },
-                  { title: 'Order Date', field: 'order_date' },
-                  { title: 'Product ID', field: 'product_id' },
-                  // { title: 'Payment Proof', render:(row) => {
-                  //   return <p>{row.payment_proof}</p>
-                  // } },
-                  { title: 'Payment Type', field: 'payment_total' },
-                  { title: 'Order Total', field: 'order_total' },
-
-                  {
-                    title: '',
-                    render: rowData => <div style={{ cursor: 'pointer' }}>
-
-                      <MoreHorizIcon onClick={handleClick} />
-                      <StyledMenu
-                        id="demo-customized-menu"
-                        MenuListProps={{
-                          'aria-labelledby': 'demo-customized-button',
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <div onClick={handleShow2}><EditIcon />
-                            <strong> Edit </strong>
-                          </div>
-                        </MenuItem>
-                         {/* Archive Data */}
-                        <MenuItem onClick={handleClose}>
-                        <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
-                          <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
-                          </div>
-                        </MenuItem>
-                      </StyledMenu>
-
-                    </div>
-                  }
-
-                ]}
-                actions={[
-                  {
-                    icon: 'add',
-                    tooltip: 'Add Subscriber',
-                    isFreeAction: true,
-                    onClick: (event, rowData) => {
-                      handleShow2();
-                    }
-                  },
-                  {
-                    icon: ArchiveIcon,
-                    tooltip: 'View Archive',
-                    isFreeAction: true,
-                    onClick: (event) => alert("You want to add a new row")
-                  }
-                ]}
-                data={[
-                  { order_id: '101', order_date: 11 / 19 / 21, product_id: '22123', payment_total: '1000', order_total: '56' },
-                ]}
-                options={{
-                  sorting: true
-                }}
-              />
-            </TabPanel>
-
-          </Box>
-
-
-          <Row>
-            <div style={{ padding: 10, color: '#30408D' }}>
-              <h1>Product Categories</h1>
-            </div>
-          </Row>
-
-          <Row>
-            <div style={{ padding: 20 }}>
-              <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                  <Tabs value={valueSecond} onChange={handleChangeSecond} aria-label="basic tabs example">
-                    <Tab label="Souvenir" {...a11yProps(0)} />
-                    <Tab label="Book" {...a11yProps(1)} />
-                    <Tab label="Innovation" {...a11yProps(2)} />
-                  </Tabs>
-                </Box>
-                <TabPanel value={valueSecond} index={0}>
-                  {/* //Souvenir */}
-
-                  <div style={{ padding: 20 }}>
-                    <MaterialTable
-                      title=""
-                      columns={[
-                        { title: 'Souvenir ID', field: 'souvenir_id' },
-                        { title: 'Souvenir Name', field: 'souvenir_name' },
-                        { title: 'Souvenir Description', field: 'souvenir_description' },
-                        { title: 'Seller ID', field: 'seller_id' },
-                        { title: 'Product ID', field: 'product_id' },
-                        {
-                          title: '',
-                          render: rowData => <div style={{ cursor: 'pointer' }}>
-
-                            <MoreHorizIcon onClick={handleClick} />
-                            <StyledMenu
-                              id="demo-customized-menu"
-                              MenuListProps={{
-                                'aria-labelledby': 'demo-customized-button',
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                            >
-                              <MenuItem onClick={handleClose} disableRipple>
-                                <div onClick={handleShow3}><EditIcon />
-                                  <strong> Edit </strong>
-                                </div>
-                              </MenuItem>
-                                 {/* Archive Data */}
-                              <MenuItem onClick={handleClose}>
-                                <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
-                                  <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
-                                </div>
-                              </MenuItem>
-                              </StyledMenu>
-                          </div>
-                        }
-
-                      ]}
-                      actions={[
-                        {
-                          icon: 'add',
-                          tooltip: 'Add Subscriber',
-                          isFreeAction: true,
-                          onClick: (event, rowData) => {
-                            handleShow3();
-                          }
-                        },
-                        {
-                          icon: ArchiveIcon,
-                          tooltip: 'View Archive',
-                          isFreeAction: true,
-                          onClick: (event) => alert("You want to add a new row")
-                        }
-                      ]}
-                      data={[
-                        // { souvenir_id: '101', souvenir_name: 'Prada', souvenir_description: 'Authentic', seller_id: '21345', product_id: '112' },
-                      ]}
-                      options={{
-                        sorting: true
-                      }}
-                    />
-                  </div>
-                </TabPanel>
-                <TabPanel value={valueSecond} index={1}>
-                  {/* Book */}
-                  <div style={{ padding: 20 }}>
-                    <MaterialTable
-                      title=""
-                      columns={[
-                        { title: 'Book ID', field: 'book_id' },
-                        { title: 'Book Name', field: 'book_name' },
-                        { title: 'Book Author', field: 'book_author' },
-                        { title: 'Book Description', field: 'book_description' },
-                        { title: 'Product ID', field: 'product_id' },
-                        {
-                          title: '',
-                          render: rowData => <div style={{ cursor: 'pointer' }}>
-
-                            <MoreHorizIcon onClick={handleClick} />
-                            <StyledMenu
-                              id="demo-customized-menu"
-                              MenuListProps={{
-                                'aria-labelledby': 'demo-customized-button',
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                            >
-                              <MenuItem onClick={handleClose} disableRipple>
-                              <div onClick={handleShow4}><EditIcon />
-                                  <strong> Edit </strong>
-                                </div>
-                              </MenuItem>
-                               {/* Archive Data */}
-                              <MenuItem onClick={handleClose}>
-                                <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
-                                <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
-                                </div>
-                              </MenuItem>
-                            </StyledMenu>
-
-                          </div>
-                        }
-
-                      ]}
-                      actions={[
-                        {
-                          icon: 'add',
-                          tooltip: 'Add Subscriber',
-                          isFreeAction: true,
-                          onClick: (event, rowData) => {
-                            handleShow4();
-                          }
-                        },
-                        {
-                          icon: ArchiveIcon,
-                          tooltip: 'View Archive',
-                          isFreeAction: true,
-                          onClick: (event) => alert("You want to add a new row")
-                        }
-                      ]}
-                      data={[
-                        // { book_id: '103', book_name: 'Prada', book_author: 'Kimberly', book_description: 'Fantasy', product_id: '115' },
-                      ]}
-                      options={{
-                        sorting: true
-                      }}
-                    />
-                  </div>
-                </TabPanel>
-                <TabPanel value={valueSecond} index={2}>
-                  {/* Innovation */}
-                  <div style={{ padding: 20 }}>
-                    <MaterialTable
-                      title=""
-                      columns={[
-                        //this column was edited by innovation group
-                        { title: 'Innovation ID', field: 'innovation_id' },
-                        { title: 'Innovation Name', field: 'innovation_title' },
-                        { title: 'Innovation Description', field: 'innovation_description' },
-                        { title: 'Innovation Story', field: 'innovation_story' },
-                        { title: 'Innovation Status', field: 'innovation_status' },
-                        { title: 'Product ID', field: 'product_id' },
-                        { title: 'Innovator ID', field: 'innovator_id' },
-                        { title: 'Price', field: 'innovation_price' },
-                        {
-                          title: '',
-                          render: rowData => <div style={{ cursor: 'pointer' }}>
-
-                            <MoreHorizIcon onClick={handleClick} />
-                            <StyledMenu
-                              id="demo-customized-menu"
-                              MenuListProps={{
-                                'aria-labelledby': 'demo-customized-button',
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                            >
-                              <MenuItem onClick={handleClose} disableRipple>
-                              <div onClick={handleShow5}><EditIcon />
-                                  <strong> Edit </strong>
-                                </div>
-                              </MenuItem>
-                             {/* Archive Data */}
-                              <MenuItem onClick={handleClose}>
-                                <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
-                                <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
-                                </div>
-                              </MenuItem>
-                            </StyledMenu>
-                          </div>
-                        }
-
-                      ]}
-                      actions={[
-                        {
-                          icon: 'add',
-                          tooltip: 'Add Subscriber',
-                          isFreeAction: true,
-                          onClick: (event, rowData) => {
-                            handleShow5();
-                          }
-                        },
-                        {
-                          icon: ArchiveIcon,
-                          tooltip: 'View Archive',
-                          isFreeAction: true,
-                          onClick: (event) => alert("You want to add a new row")
-                        }
-                      ]}
-                      //Displaying list of Innovations
-                      data={innovationList}
-                      options={{
-                        sorting: true
-                      }}
-                    />
-                  </div>
-                </TabPanel>
-              </Box>
-            </div>
-          </Row>
-          <Row>
-            <div style={{ padding: 10, color: '#30408D' }}>
-              <h1>Payment</h1>
-            </div>
-          </Row>
-
-          <Row>
-            <div style={{ padding: 20 }}>
-              <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                  <Tabs value={valueThird} onChange={handleChangeThird} aria-label="basic tabs example">
-                    <Tab label="Payment" {...a11yProps(1)} />
-                    <Tab label="Invesment" {...a11yProps(2)} />
-                  </Tabs>
-                </Box>
-                <TabPanel value={valueThird} index={0}>
-                  {/* Payment */}
-
-                  <div style={{ padding: 20 }}>
-                    <MaterialTable
-                      title=""
-                      columns={[
-                        { title: 'Payment ID', field: 'payment_id' },
-                        { title: 'Payment Type', field: 'payment_type' },
-                        // { title: 'Payment Proof', field: 'payment_proof' },
-                        { title: 'Order ID', field: 'order_id' },
-                        { title: 'User ID', field: 'user_id' },
-                        {
-                          title: '',
-                          render: rowData => <div style={{ cursor: 'pointer' }}>
-
-                            <MoreHorizIcon onClick={handleClick} />
-                            <StyledMenu
-                              id="demo-customized-menu"
-                              MenuListProps={{
-                                'aria-labelledby': 'demo-customized-button',
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                            >
-                              <MenuItem onClick={handleClose} disableRipple>
-                              <div onClick={handleShow6}><EditIcon />
-                                  <strong> Edit </strong>
-                                </div>
-                              </MenuItem>
-                            {/* Archive Data */}
-                              <MenuItem onClick={handleClose}>
-                               <div onClick={handleShow7}><FileCopyIcon style={{ color: 'red' }} />
-                               <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
-                               </div>
-                              </MenuItem>
-                            </StyledMenu>
-                          </div>
-                        }
-
-                      ]}
-                      actions={[
-                        {
-                          icon: 'add',
-                          tooltip: 'Add Subscriber',
-                          isFreeAction: true,
-                          onClick: (event, rowData) => {
-                            handleShow6();
-                          }
-                        },
-                        {
-                          icon: ArchiveIcon,
-                          tooltip: 'View Archive',
-                          isFreeAction: true,
-                          onClick: (event) => alert("You want to add a new row")
-                        }
-                      ]}
-                      data={paymentlist}
-                      options={{
-                        sorting: true
-                      }}
-                    />
-                  </div>
-                </TabPanel>
-                <TabPanel value={valueThird} index={1}>
-                  {/* Investment */}
-                  <div style={{ padding: 20 }}>
-                    <MaterialTable
-                      title=""
-                      columns={[
-                        //This column was edited by the innovation group
-                        { title: 'Invest ID', field: 'invest_id' },
-                        { title: 'Date', field: 'invest_date' },
-                        { title: 'Amount', field: 'invest_amount' },
-                        { title: 'Innovation ID', field: 'innovation_id' },
-                        { title: 'Investor ID', field: 'investor_id' },
-                        { title: 'Reference Number', field: 'invest_refNumber' },
-                        { title: 'Payment Method', field: 'invest_pMethod' },
-                        // { title: 'Payment Proof', field: 'invest_proofPayment' },
-                        {
-                          title: '',
-                          render: rowData => <div style={{ cursor: 'pointer' }}>
-
-                            <MoreHorizIcon onClick={handleClick} />
-                            <StyledMenu
-                              id="demo-customized-menu"
-                              MenuListProps={{
-                                'aria-labelledby': 'demo-customized-button',
-                              }}
-                              anchorEl={anchorEl}
-                              open={open}
-                              onClose={handleClose}
-                            >
-
-                            </StyledMenu>
-
-                          </div>
-                        }
-
-                      ]}
-                      actions={[
-                        {
-                          icon: 'add',
-                          tooltip: 'Add Subscriber',
-                          isFreeAction: true,
-                          onClick: (event, rowData) => {
-                            setModalShow(true);
-                          }
-                        },
-                        {
-                          icon: ArchiveIcon,
-                          tooltip: 'View Archive',
-                          isFreeAction: true,
-                          onClick: (event) => alert("You want to add a new row")
-                        }
-                      ]}
-                      //Displaying list of investments
-                      data={investmentList}
-                      options={{
-                        sorting: true
-                      }}
-                    />
-                  </div>
-                </TabPanel>
-              </Box>
-            </div>
-          </Row>
+          <PaymentInvestment />
+                
         </Col>
 
 
