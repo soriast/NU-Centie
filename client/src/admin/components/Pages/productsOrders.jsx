@@ -1,4 +1,4 @@
-import React, { useEffect, useState  } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row, Modal, Form, Button } from "react-bootstrap";
 import SideNavBar from './SideNavBar';
 import PropTypes from 'prop-types';
@@ -44,7 +44,7 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           User Registration
-          </Modal.Title>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -172,20 +172,19 @@ function ProductsOrders() {
   function getInnovationList() {
     Axios.get('http://localhost:3003/api/innovations').then((response) => {
       setInnovationList(response.data);
-    },[]);
-}
-
-   //Variable for investment List
-  const [investmentList, setInvestmentList] = useState([]);
-
-    //function for getting investment
-    function getInvestmentList() {
-      Axios.get('http://localhost:3003/api/investment').then((response) => {
-      setInvestmentList(response.data);
-      },[]);
+    }, []);
   }
 
-  
+  //Variable for investment List
+  const [investmentList, setInvestmentList] = useState([]);
+
+  //function for getting investment
+  function getInvestmentList() {
+    Axios.get('http://localhost:3003/api/investment').then((response) => {
+      setInvestmentList(response.data);
+    }, []);
+  }
+
   // Products
   const [productlist, setproductlist] = useState([]);
   useEffect(() => {
@@ -200,7 +199,7 @@ function ProductsOrders() {
   }, []);
 
 
-   
+
   // Orders
   const [orderlist, setorderlist] = useState([]);
   useEffect(() => {
@@ -216,7 +215,7 @@ function ProductsOrders() {
 
 
 
-    
+
   // Souvenirs
   const [souvenirslist, setsouvenirslist] = useState([]);
   useEffect(() => {
@@ -231,66 +230,174 @@ function ProductsOrders() {
   }, []);
 
 
-   // Book
-   const [booklist, setbooklist] = useState([]);
-   useEffect(() => {
-     Axios.get("http://localhost:3003/api/getBook")
-       .then((res) => {
-         console.log(res);
-         setbooklist(res.data);
-       })
-       .catch((err) => {
-         console.log(err);
-       });
-   }, []);
+  // Book
+  const [booklist, setbooklist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getBook")
+      .then((res) => {
+        console.log(res);
+        setbooklist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
 
-   // Innovation
-   const [innovationlist, setinnovationlist] = useState([]);
-   useEffect(() => {
-     Axios.get("http://localhost:3003/api/getInnovations")
-       .then((res) => {
-         console.log(res);
-         setinnovationlist(res.data);
-       })
-       .catch((err) => {
-         console.log(err);
-       });
-   }, []);
-
-
-   
-// Payment
-const [paymentlist, setpaymentlist] = useState([]);
-useEffect(() => {
-  Axios.get("http://localhost:3003/api/getPayments")
-    .then((res) => {
-      console.log(res);
-      setpaymentlist(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}, []);
+  // Innovation
+  const [innovationlist, setinnovationlist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getInnovations")
+      .then((res) => {
+        console.log(res);
+        setinnovationlist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
 
 
-   // Investment
-   const [investmentlist, setinvestmentlist] = useState([]);
-   useEffect(() => {
-     Axios.get("http://localhost:3003/api/getInvestment")
-       .then((res) => {
-         console.log(res);
-         setinvestmentlist(res.data);
-       })
-       .catch((err) => {
-         console.log(err);
-       });
-   }, []);
+  // Payment
+  const [paymentlist, setpaymentlist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getPayments")
+      .then((res) => {
+        console.log(res);
+        setpaymentlist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
 
 
-   
+  // Investment
+  const [investmentlist, setinvestmentlist] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3003/api/getInvestment")
+      .then((res) => {
+        console.log(res);
+        setinvestmentlist(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const [show, setShow] = useState(false);
+
+  const [show1, setShow1] = useState(false);
+
+  const [show2, setShow2] = useState(false);
+
+  const [show3, setShow3] = useState(false);
+
+  const [show4, setShow4] = useState(false);
+
+  const [show5, setShow5] = useState(false);
+
+  const handleClose1 = () => setShow(false);
+  const handleShow1 = () => setShow(true);
+
+  const handleClose2 = () => setShow1(false);
+  const handleShow2 = () => setShow1(true);
+
+  const handleClose3 = () => setShow2(false);
+  const handleShow3 = () => setShow2(true);
+
+  const handleClose4 = () => setShow3(false);
+  const handleShow4 = () => setShow3(true);
+
+  const handleClose5 = () => setShow4(false);
+  const handleShow5 = () => setShow4(true);
+
+  const handleClose6 = () => setShow5(false);
+  const handleShow6 = () => setShow5(true);
+
+
+  <Modal.Dialog>
+    <Modal.Header closeButton>
+      <Modal.Title>Invest Payment Confirmation</Modal.Title>
+    </Modal.Header>
+
+    <Modal.Body>
+      <p>Invest Payment Proof</p>
+      <form>
+        <label>
+          Invest Id:
+          <br />  <input type="text" name="name" />
+        </label>
+        <br />
+        <label>
+          Amount:
+          <br />  <input type="text" name="name" />
+        </label>
+        <br />
+        <label>
+          Reference:
+          <br />  <input type="text" name="name" />
+        </label>
+        <br />
+        <label>
+          Date:
+          <br />  <input type="text" name="name" />
+        </label>
+      </form>
+    </Modal.Body>
+
+    <Modal.Footer>
+      <Button variant="secondary">Cancel</Button>
+      <Button variant="primary">Verify Payment</Button>
+    </Modal.Footer>
+  </Modal.Dialog>
+
+  function PopUpModal() {
+    return (
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Invest Payment Proof</p>
+          <form>
+            <label>
+              Invest Id:
+              <br />  <input type="text" name="name" />
+            </label>
+            <br />
+            <label>
+              Amount:
+              <br />  <input type="text" name="name" />
+            </label>
+            <br />
+            <label>
+              Reference:
+              <br />  <input type="text" name="name" />
+            </label>
+            <br />
+            <label>
+              Date:
+              <br />  <input type="text" name="name" />
+            </label>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+
+  }
+
+
 
 
   return (
@@ -298,9 +405,313 @@ useEffect(() => {
       getInnovationList();
       getInvestmentList();
     }, []),
-    
-    
+
+
+
+
     <div style={{ marginTop: 100 }}>
+
+      {/* modal para sa add products */}
+      <Modal show={show} onHide={handleClose1} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Invest Payment Confirmation</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Add New Product</p>
+          <form>
+            <div style={{ marginBottom: " 10%" }}>
+              <label>
+                Product Id:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Product Price:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Product Status:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Link:
+                <br />  <input type="text" name="name" />
+              </label>
+            </div>
+            <br />
+            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+              <label>
+                Product Category:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Product Picture:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Exhibit Id:
+                <br />  <input type="text" name="name" />
+              </label>
+            </div>
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose1}>Cancel</Button>
+          <Button variant="primary" >Add Product</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Orders View */}
+      <Modal show={show1} onHide={handleClose2} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Invest Payment Confirmation</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>View Orders</p>
+          <form>
+            <div style={{ marginBottom: " 10%" }}>
+              <label>
+                Order Id:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Order Date:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Product ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+            </div>
+            <br />
+            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+              <label>
+                Payment Proof:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Payment Type:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Total Price:
+                <br />  <input type="text" name="name" />
+              </label>
+            </div>
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose2}>OK</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* add souvenir */}
+      <Modal show={show2} onHide={handleClose3} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add new Souvenir </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Add new Souvenir</p>
+          <form>
+            <div style={{ marginBottom: " 10%" }}>
+              <label>
+                Souvenir Id:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Souvenir Name:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Souvenir Description:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+            </div>
+            <br />
+            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+              <label>
+                Souvenir ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Souvenir Name:
+                <br />  <input type="text" name="name" />
+              </label>
+            </div>
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose3}>OK</Button>
+        </Modal.Footer>
+      </Modal>
+
+ {/* Add New Book */}
+ <Modal show={show3} onHide={handleClose4} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Book </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Add New Book</p>
+          <form>
+            <div style={{ marginBottom: " 10%" }}>
+              <label>
+                Book Id:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Book Name:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Book Description:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+            </div>
+            <br />
+            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+              <label>
+                Book Author:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Product ID:
+                <br />  <input type="text" name="name" />
+              </label>
+            </div>
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose4}>OK</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Add New Innovation */}
+      <Modal show={show4} onHide={handleClose5} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Innovation </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Add New Innovation</p>
+          <form>
+            <div style={{ marginBottom: " 10%" }}>
+              <label>
+                Innovation Id:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Innovation Name:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Innovation Description:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Innovation Story:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+            </div>
+            <br />
+            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+              <label>
+                Innovation Title:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Innovation Status:
+                <br />  <input type="text" name="name" />
+              </label>
+              <label>
+                Product ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Innovation ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+            </div>
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose5}>OK</Button>
+        </Modal.Footer>
+      </Modal>
+
+       {/* Payment Confirmation */}
+       <Modal show={show5} onHide={handleClose6} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>Payment Confirmation </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Payment Confirmation</p>
+          <form>
+            <div style={{ marginBottom: " 10%" }}>
+              PROOF OF PAYMENT
+            </div>
+            <br />
+            <div style={{ marginLeft: "45%", marginTop: "-50%" }}>
+              <label>
+                Payment ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                Payment Type:
+                <br />  <input type="text" name="name" />
+              </label>
+              <label>
+                Order ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+              <label>
+                User ID:
+                <br />  <input type="text" name="name" />
+              </label>
+              <br />
+            </div>
+          </form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose6}>OK</Button>
+        </Modal.Footer>
+      </Modal>
 
       <Row>
 
@@ -328,9 +739,11 @@ useEffect(() => {
                   { title: 'Product ID', field: 'product_id' },
                   { title: 'Price', field: 'product_price' },
                   { title: 'Status', field: 'product_status' },
-                  { title: 'Link', field: 'product_link',render: (row) => {
-                   return <a href={row.product_link}>{String(row.product_link)} </a>
-                  }  },
+                  {
+                    title: 'Link', field: 'product_link', render: (row) => {
+                      return <a href={row.product_link}>{String(row.product_link)} </a>
+                    }
+                  },
                   { title: 'Category', field: 'product_category' },
                   { title: 'Exhibit', field: 'exhibit_id' },
                   {
@@ -347,11 +760,12 @@ useEffect(() => {
                         open={open}
                         onClose={handleClose}
                       >
-                        <MenuItem onClick={handleClose} disableRipple>
-                          <EditIcon />
-                          <strong> Edit </strong>
+                        <MenuItem onClick={handleClose}>
+                          <div onClick={handleShow1}><EditIcon />
+                            <strong> Edit </strong>
+                          </div>
                         </MenuItem>
-                        <MenuItem onClick={handleClose} disableRipple>
+                        <MenuItem onClick={handleClose}>
                           <FileCopyIcon style={{ color: 'red' }} />
                           <strong style={{ color: 'red', marginTop: 5 }}>Archive</strong>
                         </MenuItem>
@@ -377,7 +791,9 @@ useEffect(() => {
                     onClick: (event) => alert("You want to add a new row")
                   }
                 ]}
-                data={productlist}
+                data={[
+                  { product_id: '101', product_price: 100, product_status: 'Pending', product_link: 'www.google.com', product_category: 'books', exhibit_id: '101' },
+                ]}
                 options={{
                   sorting: true
                 }}
@@ -411,8 +827,9 @@ useEffect(() => {
                         onClose={handleClose}
                       >
                         <MenuItem onClick={handleClose} disableRipple>
-                          <EditIcon />
-                          <strong> Edit </strong>
+                          <div onClick={handleShow2}><EditIcon />
+                            <strong> Edit </strong>
+                          </div>
                         </MenuItem>
                         <MenuItem onClick={handleClose} disableRipple>
                           <FileCopyIcon style={{ color: 'red' }} />
@@ -440,7 +857,9 @@ useEffect(() => {
                     onClick: (event) => alert("You want to add a new row")
                   }
                 ]}
-                data={orderlist}
+                data={[
+                  { order_id: '101', order_date: 11 / 19 / 21, product_id: '22123', payment_total: '1000', order_total: '56' },
+                ]}
                 options={{
                   sorting: true
                 }}
@@ -476,7 +895,7 @@ useEffect(() => {
                         { title: 'Souvenir ID', field: 'souvenir_id' },
                         { title: 'Souvenir Name', field: 'souvenir_name' },
                         { title: 'Souvenir Description', field: 'souvenir_description' },
-                        { title: 'Seller ID', field: 'user_id' },
+                        { title: 'Seller ID', field: 'seller_id' },
                         { title: 'Product ID', field: 'product_id' },
                         {
                           title: '',
@@ -493,8 +912,9 @@ useEffect(() => {
                               onClose={handleClose}
                             >
                               <MenuItem onClick={handleClose} disableRipple>
-                                <EditIcon />
-                                <strong> Edit </strong>
+                                <div onClick={handleShow3}><EditIcon />
+                                  <strong> Edit </strong>
+                                </div>
                               </MenuItem>
                               <MenuItem onClick={handleClose} disableRipple>
                                 <FileCopyIcon style={{ color: 'red' }} />
@@ -522,7 +942,9 @@ useEffect(() => {
                           onClick: (event) => alert("You want to add a new row")
                         }
                       ]}
-                      data={souvenirslist}
+                      data={[
+                        // { souvenir_id: '101', souvenir_name: 'Prada', souvenir_description: 'Authentic', seller_id: '21345', product_id: '112' },
+                      ]}
                       options={{
                         sorting: true
                       }}
@@ -555,8 +977,9 @@ useEffect(() => {
                               onClose={handleClose}
                             >
                               <MenuItem onClick={handleClose} disableRipple>
-                                <EditIcon />
-                                <strong> Edit </strong>
+                              <div onClick={handleShow4}><EditIcon />
+                                  <strong> Edit </strong>
+                                </div>
                               </MenuItem>
                               <MenuItem onClick={handleClose} disableRipple>
                                 <FileCopyIcon style={{ color: 'red' }} />
@@ -584,7 +1007,9 @@ useEffect(() => {
                           onClick: (event) => alert("You want to add a new row")
                         }
                       ]}
-                      data={booklist}
+                      data={[
+                        // { book_id: '103', book_name: 'Prada', book_author: 'Kimberly', book_description: 'Fantasy', product_id: '115' },
+                      ]}
                       options={{
                         sorting: true
                       }}
@@ -621,8 +1046,9 @@ useEffect(() => {
                               onClose={handleClose}
                             >
                               <MenuItem onClick={handleClose} disableRipple>
-                                <EditIcon />
-                                <strong> Edit </strong>
+                              <div onClick={handleShow5}><EditIcon />
+                                  <strong> Edit </strong>
+                                </div>
                               </MenuItem>
                               <MenuItem onClick={handleClose} disableRipple>
                                 <FileCopyIcon style={{ color: 'red' }} />
@@ -703,8 +1129,9 @@ useEffect(() => {
                               onClose={handleClose}
                             >
                               <MenuItem onClick={handleClose} disableRipple>
-                                <EditIcon />
-                                <strong> Edit </strong>
+                              <div onClick={handleShow6}><EditIcon />
+                                  <strong> Edit </strong>
+                                </div>
                               </MenuItem>
                               <MenuItem onClick={handleClose} disableRipple>
                                 <FileCopyIcon style={{ color: 'red' }} />
@@ -779,22 +1206,22 @@ useEffect(() => {
                                   <form>
                                     <label>
                                       Invest Id:
-                <br />  <input type="text" name="name" />
+                                      <br />  <input type="text" name="name" />
                                     </label>
                                     <br />
                                     <label>
                                       Amount:
-                <br />  <input type="text" name="name" />
+                                      <br />  <input type="text" name="name" />
                                     </label>
                                     <br />
                                     <label>
                                       Reference:
-                <br />  <input type="text" name="name" />
+                                      <br />  <input type="text" name="name" />
                                     </label>
                                     <br />
                                     <label>
                                       Date:
-                <br />  <input type="text" name="name" />
+                                      <br />  <input type="text" name="name" />
                                     </label>
                                   </form>
                                 </Modal.Body>
