@@ -46,8 +46,6 @@ var cardStyle = {
 var cardHeight = {};
   
 
-
-
 export default function InnovationSecondPage(){
 
   const location = useLocation()
