@@ -85,9 +85,9 @@ useEffect(() => {
             <Card style={{height:'65vh'}}>
                 <div style={{display:'inline-block', marginTop:25}}>
                     <Row>
-                        <Col sm={4}>
+                        <Col sm={6}>
                             <Container>
-                            <Card style={{width:300, height: 150, margin:'auto'}}>
+                            <Card style={{width:500, height: 150, margin:'auto'}}>
                                 <p style={{margin:15, fontWeight:'bold'}}>Innovators</p>
                                 <Container style={{display:'flex', justifyContent:'center', alignItems:'center', fontSize:40, fontWeight:'bold'}}>
                                   {innovators}
@@ -96,9 +96,9 @@ useEffect(() => {
                             </Container>
                         </Col>
 
-                        <Col sm={4}>
+                        <Col sm={6}>
                             <Container>
-                            <Card style={{width:300, height: 150, margin:'auto'}}>
+                            <Card style={{width:500, height: 150, margin:'auto'}}>
 <p style={{margin:15, fontWeight:'bold'}}>Innovation Product</p>
 <Container style={{display:'flex', justifyContent:'center', alignItems:'center', fontSize:40, fontWeight:'bold'}}>
                                     {products}
@@ -107,7 +107,7 @@ useEffect(() => {
                             </Container>
                         </Col>
 
-                        <Col sm={4}>
+                        {/* <Col sm={4}>
                             <Container>
                             <Card style={{width:300, height: 150, margin:'auto'}}>
 <p style={{margin:15, fontWeight:'bold'}}>Uploaded journals</p>
@@ -116,7 +116,7 @@ useEffect(() => {
                                 </Container>
                             </Card>
                             </Container>
-                        </Col>
+                        </Col> */}
                         
 
                         <Row>
